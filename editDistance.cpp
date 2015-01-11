@@ -1,3 +1,11 @@
+// converting string a to b
+// due to nature of implementation the 1st chars are blank spaces 
+// and are not counted for conversion
+// for detailed explanation refer: 
+// 1. Skiena topics 8.2.2 ad 8.2.3
+// 2. https://secweb.cs.odu.edu/~zeil/cs361/web/website/Lectures/styles/pages/editdistance.html
+
+
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -159,6 +167,7 @@ void reconstruct_path(char *s, char *t, int i, int j)
 int main()
 {
     int s1;
+    
     cout << endl << "ans " << string_compare(a, b);
     reconstruct_path(a, b, lena, lenb);
     cin >> s1;
