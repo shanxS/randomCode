@@ -1,20 +1,22 @@
 #include <iostream>
 #include <limits>
+#include <cstring>
 
 using namespace std;
 
-#define K 2
+#define K 3
 #define N 4
+#define NF -1
 
-int M[K+1][N+1];
+int M[N+1][K+1];
 int S[N+1];
 int I[K];
 
 void printM()
 {
-    for (int i=1; i<=K+1; ++i)
+    for (int i=0; i<=N; ++i)
     {
-        for (int j=1; j<N+1; ++j)
+        for (int j=0; j<=K; ++j)
         {
             cout << M[i][j] << " ";
         }
@@ -45,7 +47,12 @@ int sum(int i, int j)
 int calculateCost(int n, int k)
 {
     cout << n << " " << k << endl;
-
+    
+    if (M[n][k] != NF)
+    {
+        return M[n][k];
+    }
+    
     if (k == 1)
     {
         M[n][k] = sum(1, n);
@@ -57,7 +64,7 @@ int calculateCost(int n, int k)
         M[n][k] = S[n];
         return M[n][k];
     }
-
+    
     int minVal = numeric_limits<int>::max();
     int minI = -1;
     for (int i=1; i<=n; ++i)
@@ -82,18 +89,20 @@ int calculateCost(int n, int k)
 
 int main()
 {
-    S[1] = 500;
-    S[2] = 200;
-    S[3] = 100;
+    S[1] = 1000;
+    S[2] = 250;
+    S[3] = 250;
     S[4] = 1000;
 
+    memset(M, -1, sizeof(M)); 
+    
     cout << "cost " << calculateCost(N, K) << endl;
 
     printI();
     printM();
-
+    
     string s;
     cin >> s;
-
+    
     return 0;
 }
