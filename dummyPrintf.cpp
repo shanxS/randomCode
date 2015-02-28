@@ -1,6 +1,9 @@
 // idea is to mimic the internals of printf
 // this is a very very watered down version of what printf does
 // this one only evaluates %s and %d args
+//
+// NOTE: in real world instead of using cout to print in stdout, FILE* is used
+//
 #include <stdarg.h>
 #include <string.h>
 #include <iostream>
