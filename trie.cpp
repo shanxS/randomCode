@@ -11,8 +11,14 @@ class TrieEntry
     public:
     TrieEntry()
     {
-        thisEntry = '*';
+        thisEntry = '\0';
         ending = 0;
+    }
+    
+    bool isParentEntry()
+    {
+        if (thisEntry == '\0') return true;
+        else                   return false;
     }
    
     TrieEntry (char entry)
@@ -76,21 +82,13 @@ class TrieEntry
         }
     }
     
-    vector<string> getPrefixEntries (string entry, string parent)
+    vector<string> getPrefixEntries (string entry)
     {   
         vector<string> prefix; 
         
         if (entry.size() == 0)
         {
-            for(int i=0; i<ending; ++i)
-            {
-                prefix.push_back(parent);
-            }
-            
-            vector<string> childPrefix = getChildPrefixEntries(parent);
-            prefix.insert(prefix.end(), childPrefix.begin(), childPrefix.end());
-            
-            return prefix;
+            return getChildEntries();
         }
         
         map<char, TrieEntry>::iterator it = entryMap.find(entry.at(0));
@@ -100,33 +98,50 @@ class TrieEntry
         }
         else
         {
-            return (it->second).getPrefixEntries(entry.substr(1, entry.size() - 1), parent);
+            string thisEntryString;
+            thisEntryString.push_back(thisEntry);
+        
+            prefix = (it->second).getPrefixEntries(entry.substr(1, entry.size() - 1));
+            for(int i=0; i<prefix.size(); ++i)
+            {
+                prefix[i] = thisEntryString + prefix[i];
+            }
+             
+            return prefix;
         }
     }
     
     private:
     
-    vector<string> getChildPrefixEntries(string parent)
+    vector<string> getChildEntries()
     {
-        vector<string> childPrefix;
+        vector<string> prefix; 
+        string thisEntryString;
+        thisEntryString.push_back(thisEntry);
+    
+        for (int i=0; i<ending; ++i)
+        {
+            prefix.push_back(thisEntryString);
+        }
         
+        vector<string> childEntries;
         map<char, TrieEntry>::iterator it = entryMap.begin();
         while (it != entryMap.end())
-        {   
-            for (int i=0; i<(it->second).ending; ++i)
-            {
-                childPrefix.push_back(parent);
-            }
+        {
+            vector<string> thisChildEntry = (it->second).getChildEntries();
+            childEntries.insert(childEntries.end(), thisChildEntry.begin(), thisChildEntry.end());
             
-            //parent.push_back(thisEntry);
-            vector<string> childChildPrefix = (it->second).getChildPrefixEntries(parent);
-            
-            childPrefix.insert(childPrefix.end(), childChildPrefix.begin(), childChildPrefix.end());
-        
             it++;
         }
         
-        return childPrefix;
+        for (int i=0; i<childEntries.size(); ++i)
+        {
+            childEntries[i] = thisEntryString + childEntries[i];
+        }
+        
+        prefix.insert(prefix.end(), childEntries.begin(), childEntries.end());
+        
+        return prefix;
     }
     
     int calculatePostFixEnding()
@@ -191,26 +206,12 @@ int main()
     trie.addEntry("sumedha");
     
     trie.print();
-    /*while(true)
-    {
-        string s;
-        cin >> s;
-        int count = 0;
-        if ((count = trie.countPrefixEntry(s)) != 0)
-        {
-            cout << count << endl;
-        }
-        else
-        {
-            cout << count << endl;
-        }
-    }*/
     
     while(true)
     {
         string s;
         cin >> s;
-        vector<string> str = trie.getPrefixEntries(s,s);
+        vector<string> str = trie.getPrefixEntries(s);
         for (int i=0; i<str.size(); ++i)
         {
             cout << str[i] << endl;
