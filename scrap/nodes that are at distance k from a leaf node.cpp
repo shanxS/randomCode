@@ -1,9 +1,11 @@
 // http://www.geeksforgeeks.org/print-nodes-distance-k-leaf-node/
+// O(n)
 
 #include <iostream>
 #include <limits>
 #include <memory>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -97,32 +99,34 @@ class BinaryTree
 class GettingNthNodeFromLeaf : public BinaryTree
 {
     public:
-        void go(const int distance)
+        void go(int distance)
         {
-            goPrint(m_head, distance);
+            queue<NodePtr> que;
+            que.push(m_head);
+            goPrint(m_head, que, distance);
         }
         
     private:
-        void goPrint(NodePtr node, const int distance)
+        void goPrint(NodePtr &node, queue<NodePtr> que, const int distance)
         {
-            vector<NodePtr> children = getNodesAtDepth(node, distance);
-            
-            for (const auto &value : children)
-            {
-                if (isLeafNode(value))
-                {
-                    cout << node->value << endl;
-                    break;
-                }
+            if (distance == que.size() && (isLeafNode(node)))
+            {       
+                cout << que.front()->value << endl;
             }
+            
+            if (distance == que.size())
+            {
+                que.pop();
+            }
+            que.push(node);
             
             if (node->rightChildPtr)
             {
-                goPrint (node->rightChildPtr, distance);
+                goPrint (node->rightChildPtr, que, distance);
             }
             if (node->leftChildPtr)
             {
-                goPrint (node->leftChildPtr, distance);
+                goPrint (node->leftChildPtr, que, distance);
             }
         }
         
@@ -135,48 +139,24 @@ class GettingNthNodeFromLeaf : public BinaryTree
             
             return false;
         }
-        
-        vector<NodePtr> getNodesAtDepth(NodePtr node, int depth)
-        {
-            vector<NodePtr> nodes;
-            --depth;
-            
-            if (depth == 0)
-            {
-                nodes.push_back(node);
-            }
-            else
-            {
-                vector<NodePtr> rightNodes, leftNodes;
-                
-                if (node->rightChildPtr)
-                {
-                    rightNodes = getNodesAtDepth (node->rightChildPtr, depth);
-                }
-                if (node->leftChildPtr)
-                {
-                    leftNodes = getNodesAtDepth (node->leftChildPtr, depth);
-                }
-                
-                nodes.insert(nodes.end(), rightNodes.begin(), rightNodes.end());
-                nodes.insert(nodes.end(), leftNodes.begin(), leftNodes.end());
-            }
-            
-            return nodes;
-        }
-    
+      
 };
 
 int main()
 {
     GettingNthNodeFromLeaf bt;
-    bt.insert(1);
-    bt.insert(3);
-    bt.insert(6);
-    bt.insert(2);
-    bt.insert(0);
+    bt.insert(10);
+    bt.insert(5);
+    bt.insert(15);
+    bt.insert(7);
+    bt.insert(12);
+    bt.insert(17);
+    bt.insert(11);
+    bt.insert(13);
     
     bt.printTree();
+    
+    cout << "========" << endl;
     
     bt.go (2);
     
