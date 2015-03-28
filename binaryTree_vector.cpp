@@ -1,4 +1,8 @@
 // binary tree using vector
+// https://en.wikipedia.org/wiki/Binary_tree#Arrays
+// assuming the root has index zero - if a node has an index i, its children are found at indices 2i + 1 (for the left child) 
+// and 2i +2 (for the right), while 
+// its parent (if any) is found at index floor ((i-1)/2)
 
 #include <iostream>
 #include <limits>
@@ -14,6 +18,24 @@ class BST
           tree()
         {}
        
+        void insert(const int value)
+        {
+            insertIntoTree(0, value);
+        }
+    
+        void printTree()
+        {
+            for (int i=0; i<tree.size(); ++i)
+            {
+                if (getValue(i) != invalidNum)
+                {
+                    cout << getValue(i) << " - " << getValue(getLeftChildPosition(i)) 
+                         << " " << getValue(getRightChildPosition(i)) << endl;
+                }
+            }
+        }
+    
+    private:
         void insertIntoTree(const int parent, const int value)
         {
             if (parent == 0 && tree.size() == 0)
@@ -34,19 +56,6 @@ class BST
             }
         }
     
-        void printTree()
-        {
-            for (int i=0; i<tree.size(); ++i)
-            {
-                if (getValue(i) != invalidNum)
-                {
-                    cout << getValue(i) << " - " << getValue(getLeftChildPosition(i)) 
-                         << " " << getValue(getRightChildPosition(i)) << endl;
-                }
-            }
-        }
-    
-    private:
         void makeRoomFor(int position)
         {
             int count = position - tree.size() + 1;
@@ -101,11 +110,11 @@ int main()
 {
     BST myBinary;
     
-    myBinary.insertIntoTree(0, 1);
-    myBinary.insertIntoTree(0, 3);
-    myBinary.insertIntoTree(0, 6);
-    myBinary.insertIntoTree(0, 2);
-    myBinary.insertIntoTree(0, 0);
+    myBinary.insert(1);
+    myBinary.insert(3);
+    myBinary.insert(6);
+    myBinary.insert(2);
+    myBinary.insert(0);
     
     myBinary.printTree();
 }
