@@ -33,7 +33,7 @@ void printTree(BST tree)
     }
 }
 
-void insertIntoTree(BST::iterator it, BST &tree, const int &value)
+void insertIntoTree(BST::iterator it, BST &tree, const int value)
 {
     if (it == tree.end() && it == tree.begin())
     {
