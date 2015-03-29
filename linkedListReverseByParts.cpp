@@ -108,11 +108,42 @@ class LinkedList
             tempHead->next = shared_ptr<Node>();
         }
         
-        void reversInParts(int part)
-        {}
+        void reverseK(int k)
+        {
+            m_head = kAltReverse(m_head, k);
+        }
         
     private:
         NodePtr m_head;
+        
+        NodePtr kAltReverse(NodePtr head, const int k)
+        {
+            NodePtr previous = shared_ptr<Node>();
+            NodePtr current = head;
+            NodePtr next;
+            int count = 0;
+            
+            while(count < k && current->next)
+            {
+                next = current->next;
+                current->next = previous;
+                previous = current;
+                current = next;
+                ++count;
+            }
+            
+            if (current->next && head)
+            {
+                head->next = kAltReverse(current, k);
+            }
+            else
+            {
+                current->next = previous;
+                previous = current;
+            }
+            
+            return previous;
+        }
         
         void reverseByRecursion(NodePtr node)
         {
@@ -139,6 +170,8 @@ int main()
     ll.insert(4);
     ll.insert(5);
     ll.insert(6);
+    ll.insert(7);
+    ll.insert(8);
 
     ll.printList();
     
@@ -150,6 +183,12 @@ int main()
     
     cout << "reverse by recursion " << endl;
     ll.reverseRecursive();
+    
+    cout << "print " << endl;
+    ll.printList();
+    
+    cout << "reverse by parts " << endl;
+    ll.reverseK(3);
     
     cout << "print " << endl;
     ll.printList();
