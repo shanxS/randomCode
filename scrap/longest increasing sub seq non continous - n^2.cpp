@@ -1,5 +1,6 @@
 // http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subsequence/
-// longest not incresing subseq and print the sub seq
+// longest not continous incresing subseq and print the sub seq
+// time complexity n^2
 
 #include <iostream>
 #include <utility>
