@@ -14,13 +14,21 @@ public class Main {
         Integer[] array = {1,2,3,4};
         List<Integer> partialArray = new ArrayList<>();
         List<Integer> bag = new ArrayList<>(Arrays.asList(array));
-        permute(bag, partialArray, 3);
+        Integer newArrayLength = 3;
+        permute(bag, partialArray, newArrayLength);
+
+        Integer outputCount = 1;
+        for (Integer i=0; i<newArrayLength; ++i)
+        {
+            outputCount *= (array.length - i);
+        }
+        assert arrays.size() == outputCount;
 
         for (Integer[] a : arrays)
-        {
-            for (Integer value : a)
-            {
-                System.out.print(value + " ");
+                {
+                    for (Integer value : a)
+                    {
+                        System.out.print(value + " ");
             }
 
             System.out.println();
