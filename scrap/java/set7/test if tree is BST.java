@@ -1,6 +1,7 @@
 // test if tree is BST
 // written test, q1, set7, amazon
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,35 +9,55 @@ public class Main {
 
     public static void main(String[] args) {
         Tree tree = new Tree();
-        tree.insert(6);
-        tree.insert(3);
-        tree.insert(11);
-        tree.insert(1);
-        tree.insert(4);
-        tree.insert(null);
-        tree.insert(14);
-        tree.insert(null);
-        tree.insert(null);
-        tree.insert(null);
-        tree.insert(null);
-        tree.insert(null);
-        tree.insert(null);
-        tree.insert(13);
 
-        /*tree.insert(6);
-        tree.insert(3);
-        tree.insert(8);
-        tree.insert(11);
-        tree.insert(null);
-        tree.insert(9);
-        tree.insert(10);
-        tree.insert(null);
-        tree.insert(null);
-        tree.insert(null);
-        tree.insert(null);
+        // BST
+//        tree.insert(6);
+//        tree.insert(3);
+//        tree.insert(11);
+//        tree.insert(1);
+//        tree.insert(4);
+//        tree.insert(null);
+//        tree.insert(14);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(13);
+
+        // not BST
+//        tree.insert(6);
+//        tree.insert(3);
+//        tree.insert(8);
+//        tree.insert(11);
+//        tree.insert(null);
+//        tree.insert(9);
+//        tree.insert(10);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(null);
+//        tree.insert(1);
+//        tree.insert(null);
+//        tree.insert(2);
+
+        // BST
         tree.insert(1);
         tree.insert(null);
-        tree.insert(2);*/
+        tree.insert(2);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(3);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(null);
+        tree.insert(4);
 
         tree.print();
 
@@ -108,20 +129,34 @@ class BSTClaim
         }
 
         Integer rightChild = tree.getValueAt(tree.getRightChildIndex(tree.getHeadIndex()));
-        if (rightChild == null)
-        {
-            isLeftChildLeaaThan = null;
-            return;
-        }
-
         Integer leftChild = tree.getValueAt(tree.getLeftChildIndex(tree.getHeadIndex()));
-        if (leftChild == null)
+
+        if (leftChild == null && rightChild != null)
         {
-            isLeftChildLeaaThan = null;
+            if (rightChild > head) {
+                isLeftChildLeaaThan = true;
+            }
+            else
+            {
+                isLeftChildLeaaThan = false;
+            }
             return;
         }
 
-        if (leftChild < head && rightChild > head)
+
+        if (leftChild != null && rightChild == null)
+        {
+            if (leftChild < head) {
+                isLeftChildLeaaThan = true;
+            }
+            else
+            {
+                isLeftChildLeaaThan = false;
+            }
+
+            return;
+        }
+        else if (leftChild < head && rightChild > head)
         {
             isLeftChildLeaaThan = true;
             return;
