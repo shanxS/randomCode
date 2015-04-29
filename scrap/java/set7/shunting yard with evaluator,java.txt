@@ -1,0 +1,185 @@
+// shunting yard with evaluator
+// r: witten, q1, amazon, set 8
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String operatiorn = "(2+3)*5";
+        PostFix pf = new PostFix(operatiorn);
+
+        List<Character> post = pf.getPostfix();
+        post.stream().forEach(x -> System.out.print(x + " "));
+
+        Evaluator eval = new Evaluator(post);
+        System.out.println(eval.evaluate());
+    }
+}
+
+class Evaluator
+{
+    private List<Character> postfix;
+    private Stack<Integer> stack;
+
+    public Evaluator(List<Character> postfix)
+    {
+        this.postfix = postfix;
+        this.stack = new Stack<>();
+    }
+
+    public Double evaluate()
+    {
+        for (Integer i=0; i<postfix.size(); ++i)
+        {
+            if (Character.isDigit(postfix.get(i)))
+            {
+                stack.push(Integer.parseInt(postfix.get(i) + ""));
+            }
+            else
+            {
+                Integer first = stack.pop();
+                Integer second = stack.pop();
+                switch (postfix.get(i))
+                {
+                    case '+':
+                        stack.push(first + second);
+                        break;
+
+                    case '-':
+                        stack.push(first - second);
+                        break;
+
+                    case '/':
+                        stack.push(first / second);
+                        break;
+
+                    case '*':
+                        stack.push(first * second);
+                        break;
+                }
+            }
+        }
+
+        return (stack.size() > 0) ? (double)stack.pop() : null;
+    }
+}
+
+class PostFix
+{
+    private String infix;
+    private Stack<Character> numberStack;
+    private Stack<Character> symbolStack;
+    private List<Character> symbolTable;
+
+    public PostFix(String infix)
+    {
+        this.infix = infix;
+        this.numberStack = new Stack<>();
+        this.symbolStack = new Stack<>();
+        this.symbolTable = new ArrayList<>();
+        symbolTable.add('-');
+        symbolTable.add('+');
+        symbolTable.add('*');
+        symbolTable.add('/');
+        symbolTable.add('^');
+    }
+
+    public List<Character> getPostfix()
+    {
+        for (Character c : infix.toCharArray())
+        {
+            if (isOperand(c))
+            {
+                performOperandOperation(c);
+            }
+            else
+            {
+                numberStack.add(c);
+            }
+        }
+
+        while (symbolStack.size() > 0)
+        {
+            numberStack.push(symbolStack.pop());
+        }
+
+        List<Character> postfix = new ArrayList<>();
+        while (numberStack.size() > 0)
+        {
+            postfix.add(numberStack.pop());
+        }
+
+        Collections.reverse(postfix);
+        return postfix;
+    }
+
+    private void performOperandOperation(Character c) {
+        if (c == ')')
+        {
+            while(symbolStack.peek() != '(')
+            {
+                numberStack.push(symbolStack.pop());
+            }
+            symbolStack.pop();
+        }
+        else if (c == '(' || (symbolStack.size()>0 && symbolTable.contains(c) && symbolStack.peek() == '('))
+        {
+            symbolStack.push(c);
+        }
+        else
+        {
+           while(symbolStack.size()>0 && lessPrecedence(c, symbolStack.peek()))
+           {
+               numberStack.push(symbolStack.pop());
+           }
+
+            symbolStack.push(c);
+        }
+    }
+
+    private boolean lessPrecedence(Character op1, Character op2) {
+
+        if ((op1 == '*' && op2 == '/') || (op1 == '/' && op2 == '*'))
+        {
+            return true;
+        }
+
+        Integer op1Index = null;
+        Integer op2Index = null;
+
+        for (Integer i=0; (i<symbolTable.size()) && (op1Index == null || op2Index == null); ++i)
+        {
+            if (symbolTable.get(i) == op1)
+            {
+                op1Index = i;
+            }
+
+            if (symbolTable.get(i) == op2)
+            {
+                op2Index = i;
+            }
+        }
+
+        if (op2Index > op1Index) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private boolean isOperand(Character c) {
+        if (symbolTable.contains(c) || c == '(' || c == ')')
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+}
