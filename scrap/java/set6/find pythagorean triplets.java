@@ -1,6 +1,9 @@
 // r3, q3, set 6, amazon
 // Given an array, find three numbers a, b and c such that a^2 + b^2 = c^2
-// does not work well with duplicates
+// WRONG: does not work well with duplicates
+// this method does work with duplicates
+// see set10, r2, q3
+
 
 import java.util.*;
 
