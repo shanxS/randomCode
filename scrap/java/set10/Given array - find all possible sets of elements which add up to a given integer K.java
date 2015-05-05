@@ -1,6 +1,3 @@
-// Given array, find all possible sets of elements which add up to a given integer K
-// r3, q1, set10 amazon
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,91 +6,60 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Integer[] array =  {1,2,3,4,6,8,10};
+        Integer[] array = {2,3,5,6,4};
 
-        SetFinder sf = new SetFinder(array, 8);
-        sf.find();
+        SetFinder sf = new SetFinder(array, 10);
+        System.out.println(sf.find());
     }
 }
 
 class SetFinder
 {
-    private final List<Integer> globalNumbers;
-    private final Integer globalTarget;
+    List<Integer> globalBag;
+    Integer globalTarget;
 
     public SetFinder(Integer[] array, Integer target)
     {
-        this.globalNumbers = Arrays.asList(array);
+        this.globalBag = Arrays.asList(array);
         this.globalTarget = target;
     }
 
     public Integer find()
     {
-        List<List<Integer>> lists = new ArrayList<>();
+        List<Integer> newBag = new ArrayList<>(globalBag);
+        Integer number = newBag.get(0);
+        newBag.remove(number);
 
-        for (Integer i=0; i< globalNumbers.size(); ++i)
-        {
-            Integer number = globalNumbers.get(i);
-
-            List<Integer> newNumbers = new ArrayList<>(globalNumbers);
-            newNumbers.remove(number);
-
-            List<Integer> bed = new ArrayList<>(globalNumbers);
-            bed.remove(number);
-
-            Integer result = findSet(globalTarget - number, newNumbers, bed, lists);
-            if (result >= 1)
-            {
-                for (List<Integer> list : lists)
-                {
-                    list.add(number);
-                }
-            }
-        }
-
-        return lists.size();
+        return findSet(globalTarget-number, newBag, "") + findSet(globalTarget, newBag, "");
     }
 
-    private Integer findSet(int target, List<Integer> numbers, List<Integer> bed, List<List<Integer>> lists)
+    private Integer findSet(Integer thisTarget, List<Integer> thisBag, String pastSting)
     {
-        if (target == 0)
+
+        if (thisTarget < 0)
         {
-            lists = new ArrayList<>();
+            return 0;
+        }
+
+        System.out.println(pastSting + " analysing for " + thisTarget);
+
+        if (thisTarget == 0)
+        {
+            System.out.println(pastSting + " returning 1 " + thisTarget);
             return 1;
         }
-        if (target < 0)
+
+        if (thisBag.size() == 0)
         {
             return 0;
         }
-        if (target > 0 && numbers.size() <= 0)
-        {
-            return 0;
-        }
 
-        Integer result = 0;
-        for(Integer i=0; i<numbers.size(); ++i)
-        {
-            Integer number = globalNumbers.get(i);
+        List<Integer> newBag = new ArrayList<>(thisBag);
+        Integer number = newBag.get(0);
+        newBag.remove(number);
 
-            List<Integer> newNumbers = new ArrayList<>(number);
-            newNumbers.remove(number);
+        System.out.println(pastSting + " recusing for " + (thisTarget - number) + " " + thisTarget);
 
-            List<Integer> newBed = new ArrayList<>(bed);
-            newBed.add(number);
-
-            Integer thisResult = findSet(target-number, newNumbers, newBed, lists);
-            if (thisResult >= 1)
-            {
-                result += 0;
-                for (List<Integer> list : lists)
-                {
-                    list.add(number);
-                }
-            }
-        }
-
-        return result;
-
-
+        return findSet(thisTarget - number, newBag, " " + pastSting) +  findSet(thisTarget, newBag, " " + pastSting);
     }
 }
