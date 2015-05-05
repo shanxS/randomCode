@@ -1,3 +1,6 @@
+// Given array, find all possible sets of elements which add up to a given integer K
+// r3, q1, set10 amazon
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -6,9 +9,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Integer[] array = {2,3,5,6,4};
+        Integer[] array = {1,1,2,3,4,6,8,10};//{2,3,5,6,4};
 
-        SetFinder sf = new SetFinder(array, 10);
+        SetFinder sf = new SetFinder(array, 8);
         System.out.println(sf.find());
     }
 }
@@ -30,10 +33,39 @@ class SetFinder
         Integer number = newBag.get(0);
         newBag.remove(number);
 
-        return findSet(globalTarget-number, newBag, "") + findSet(globalTarget, newBag, "");
+        List<List<Integer>> lists = new ArrayList<>();
+
+        List<List<Integer>> inclusionList = new ArrayList<>();
+        Integer inclusionResult  = findSet(globalTarget-number, newBag, inclusionList);
+        if (inclusionResult >= 1)
+        {
+            for (List<Integer> list : inclusionList)
+            {
+                list.add(number);
+            }
+        }
+
+        List<List<Integer>> exlcusionList = new ArrayList<>();
+        Integer exclusionResult= findSet(globalTarget, newBag, exlcusionList);
+
+        lists.addAll(exlcusionList);
+        lists.addAll(inclusionList);
+
+        print(lists);
+
+        return exclusionResult + inclusionResult;
     }
 
-    private Integer findSet(Integer thisTarget, List<Integer> thisBag, String pastSting)
+    private void print(List<List<Integer>> lists)
+    {
+        for (List<Integer> list : lists)
+        {
+            list.stream().forEach(x -> System.out.print(" " + x));
+            System.out.println();
+        }
+    }
+
+    private Integer findSet(Integer thisTarget, List<Integer> thisBag, List<List<Integer>> lists)
     {
 
         if (thisTarget < 0)
@@ -41,11 +73,9 @@ class SetFinder
             return 0;
         }
 
-        System.out.println(pastSting + " analysing for " + thisTarget);
-
         if (thisTarget == 0)
         {
-            System.out.println(pastSting + " returning 1 " + thisTarget);
+            lists.add(new ArrayList<>());
             return 1;
         }
 
@@ -58,8 +88,22 @@ class SetFinder
         Integer number = newBag.get(0);
         newBag.remove(number);
 
-        System.out.println(pastSting + " recusing for " + (thisTarget - number) + " " + thisTarget);
+        List<List<Integer>> inclusionList = new ArrayList<>();
+        Integer inclusionResult = findSet(thisTarget - number, newBag, inclusionList);
+        if (inclusionResult >= 1)
+        {
+            for (List<Integer> list : inclusionList)
+            {
+                list.add(number);
+            }
+        }
 
-        return findSet(thisTarget - number, newBag, " " + pastSting) +  findSet(thisTarget, newBag, " " + pastSting);
+        List<List<Integer>> exlusionList = new ArrayList<>();
+        Integer exclusionResult = findSet(thisTarget, newBag, exlusionList);
+
+        lists.addAll(inclusionList);
+        lists.addAll(exlusionList);
+
+        return inclusionResult + exclusionResult;
     }
 }
