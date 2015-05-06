@@ -1,9 +1,7 @@
-// print tree in spiral/zigzag order using 1 queue
+// print tree in sprial/zigzag order using 2 stacks
 // tech1, q1, set11
 
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 public class Main
 {
@@ -26,60 +24,55 @@ public class Main
 class SpiralPrinter
 {
     private final Node head;
-    private List<Node> list;
-    private Integer depth, cursor;
+    private Stack<Node> stack1, stack2;
 
     public SpiralPrinter(BST tree)
     {
         this.head = tree.getHead();
-        this.list = new ArrayList<>();
+        this.stack1 = new Stack<>();
+        this.stack2 = new Stack<>();
+
+        stack1.push(head);
     }
 
     public void print()
     {
         Boolean flag = false;
-        list.add(head);
-        cursor = 0;
-        depth = list.size();
 
-        while(cursor != depth)
+        while(stack1.size() > 0 || stack2.size() > 0)
         {
-            for (Integer  i=depth-1; i>=cursor; --i)
+            while (stack1.size() > 0)
             {
-                Node node = list.get(i);
+                Node node = stack1.pop();
+                System.out.print(node.getValue() + " ");
 
-                if (flag)
+                if (node.getLeft() != null)
                 {
-                    if(node.getLeft() != null)
-                    {
-                        list.add(node.getLeft());
-                    }
-                    if (node.getRight() != null)
-                    {
-                        list.add(node.getRight());
-                    }
+                    stack2.push(node.getLeft());
                 }
-                else
+                if (node.getRight() != null)
                 {
-                    if (node.getRight() != null)
-                    {
-                        list.add(node.getRight());
-                    }
-                    if(node.getLeft() != null)
-                    {
-                        list.add(node.getLeft());
-                    }
+                    stack2.push(node.getRight());
                 }
             }
 
-            flag = !flag;
-            cursor = depth;
-            depth = list.size();
+            while(stack2.size() > 0)
+            {
+                Node node = stack2.pop();
+
+                System.out.print(node.getValue() + " ");
+
+                if (node.getRight() != null)
+                {
+                    stack1.push(node.getRight());
+                }
+                if (node.getLeft() != null)
+                {
+                    stack1.push(node.getLeft());
+                }
+            }
         }
-
-        list.stream().forEach(x -> System.out.print(x.getValue() + " "));
     }
-
 }
 
 
