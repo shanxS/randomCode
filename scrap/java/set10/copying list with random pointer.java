@@ -23,6 +23,8 @@ public class Main
         LL.print(ll.getHead());
 
         Copier copier = new Copier(ll);
+        System.out.println("-------------------");
+        LL.print(copier.copy());
     }
 
 }
@@ -36,22 +38,55 @@ class Copier
         this.head = ll.getHead();
     }
 
-    public void copy()
+    public Node copy()
     {
         Node cursor = head;
-        while (cursor != null)
+
+        while(cursor != null)
         {
-            Node node = new Node(cursor.getValue());
-            node.setNext(cursor.getNext());
-            cursor.setNext(node);
+            Node copyNode = new Node(cursor.getValue());
+            copyNode.setNext(cursor.getNext());
+            cursor.setNext(copyNode);
+
+            cursor = copyNode.getNext();
         }
 
-        while()
 
         cursor = head;
-        Node copyCursor = cursor.getNext();
+        while(cursor != null)
+        {
+            Node copyNode = cursor.getNext();
 
-        while()
+            if (cursor.getMad() != null)
+            {
+                copyNode.setMad(cursor.getMad().getNext());
+            }
+
+            cursor = copyNode.getNext();
+        }
+
+        cursor = head;
+        Node head2 = cursor.getNext();
+        Node cursor2 = head2;
+        while(cursor != null)
+        {
+            cursor.setNext(cursor2.getNext());
+
+            if (cursor2.getNext() != null)
+            {
+                cursor2.setNext(cursor2.getNext().getNext());
+            }
+            else
+            {
+                cursor2.setNext(null);
+            }
+
+            cursor = cursor.getNext();
+            cursor2 = cursor2.getNext();
+
+        }
+
+        return head2;
     }
 }
 
