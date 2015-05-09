@@ -1,4 +1,5 @@
-// list prime numbers such that p x q less than equal to n - n is given
+// list prime numbers such that p*q <= n - n is given
+// r6, q1, set14
 
 import java.util.ArrayList;
 import java.util.List;
