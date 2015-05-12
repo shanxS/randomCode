@@ -1,0 +1,217 @@
+// test if contents of two trees are same
+// r4, q2, set17
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Integer[] array = new Integer[]{30, 20, 50, 10, 25, 35, 55, 45, 51};
+        BST tree1 = new BST();
+        for (Integer value : array)
+        {
+            tree1.insert(value);
+        }
+
+        System.out.println("tree1 ===========");
+        BST.print(tree1.getHead());
+
+
+        BST tree2 = new BST();
+        Random rand = new Random();
+        for (Integer i = array.length - 1; i >= 0; --i)
+        {
+            Integer newI = rand.nextInt(i + 1);
+            Integer tmp = array[i];
+            array[i] = array[newI];
+            array[newI] = tmp;
+        }
+        for (Integer value : array)
+        {
+            tree2.insert(value);
+        }
+//        for (Integer i=0; i<array.length-2; ++i)
+//        {
+//            tree2.insert(array[i]);
+//        }
+
+        System.out.println("tree2 ===========");
+        BST.print(tree2.getHead());
+
+        TreeTester tt = new TreeTester(tree1, tree2);
+        System.out.print(tt.test());
+    }
+}
+
+class TreeTester
+{
+    private Node head1, head2;
+    private List<Integer> list;
+
+    public TreeTester(BST tree1, BST tree2)
+    {
+        this.head1 = tree1.getHead();
+        this.head2 = tree2.getHead();
+        this.list = new ArrayList<>();
+    }
+
+    public Boolean test()
+    {
+        popIn(head1);
+        return popOut(head2) && (list.size() == 0);
+    }
+
+    private Boolean popOut(Node node)
+    {
+        if (node == null)
+        {
+            return true;
+        }
+
+        if (!list.remove(node.getValue()))
+        {
+            return false;
+        }
+
+        return popOut(node.getLeft()) && popOut(node.getRight());
+    }
+
+    private void popIn(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        list.add(node.getValue());
+        popIn(node.getLeft());
+        popIn(node.getRight());
+    }
+
+
+}
+
+class BST
+{
+    private Node head;
+    private Boolean ruleLeftLessThan;
+
+    public BST()
+    {
+
+        this.head = null;
+        this.ruleLeftLessThan = true;
+    }
+
+    public void insert(Integer value)
+    {
+        if (head == null)
+        {
+            head = new Node(value);
+        }
+        else
+        {
+            insert(head, value);
+        }
+    }
+
+    public static void print(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        System.out.print(node.getValue() + " - ");
+        if (node.getLeft() != null)
+        {
+            System.out.print(node.getLeft().getValue());
+        }
+        System.out.print(", ");
+        if (node.getRight() != null)
+        {
+            System.out.print(node.getRight().getValue());
+        }
+        System.out.println();
+
+        print(node.getLeft());
+        print(node.getRight());
+    }
+
+    private void insert(Node node, Integer value)
+    {
+        if((node.getValue() > value) == ruleLeftLessThan)
+        {
+            if (node.getLeft() != null)
+            {
+                insert(node.getLeft(), value);
+            }
+            else
+            {
+                node.setLeft(new Node(value));
+            }
+        }
+        else if ((node.getValue() > value) != ruleLeftLessThan)
+        {
+            if (node.getRight() != null)
+            {
+                insert(node.getRight(), value);
+            }
+            else
+            {
+                node.setRight(new Node(value));
+            }
+        }
+    }
+
+    public Node getHead()
+    {
+        return head;
+    }
+}
+
+class Node
+{
+    private Integer value;
+    private Node left, right;
+
+    public Node(Integer value)
+    {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+
+    public Integer getValue()
+    {
+        return value;
+    }
+
+    public void setValue(Integer value)
+    {
+        this.value = value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+}
