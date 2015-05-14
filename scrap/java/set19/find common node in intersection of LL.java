@@ -1,25 +1,38 @@
-// linked list loop detector and resolver
+// find common node in intersection of LL
 // r2, q1, set19, partial 
 
 public class Main
 {
     public static void main(String[] args)
     {
-        Integer[] array = new Integer[]{1,2,3,4,5,6,7};
+        Integer[] array = new Integer[]{5,6,7,8};
         LL ll = new LL();
         for (Integer value : array)
         {
             ll.insert(value);
         }
 
-        ll.makeLoopAt(5);
-        LoopDetectorAndResolver loopDetectorAndResolver = new LoopDetectorAndResolver(ll);
-        System.out.print(loopDetectorAndResolver.hasLoop());
-        loopDetectorAndResolver.resolveLoop();
+        Integer[] array2 = new Integer[]{4,3,2};
+        LL ll2 = new LL();
+        for (Integer value : array2)
+        {
+            ll2.insert(value);
+        }
+
+        ll.jointLLAt(ll2, 7);
+
+        LL.print(ll.getHead());
+        LL.print(ll2.getHead());
+
+        ///////////////////////
+
+        ll.makeLoopAt(8);
+        LoopDetectorAndResolver ldr = new LoopDetectorAndResolver(ll2);
+        ldr.hasLoop();
+        ldr.resolveLoop();
 
     }
 }
-
 
 class LoopDetectorAndResolver
 {
@@ -88,6 +101,24 @@ class LL
         this.head = null;
     }
 
+    public void jointLLAt(LL ll, Integer value)
+    {
+        Node node = findNode(value);
+        if (node == null)
+        {
+            System.out.print("cant find node");
+            return;
+        }
+
+        Node cursor = ll.head;
+        while(cursor.getNext() != null)
+        {
+            cursor = cursor.getNext();
+        }
+
+        cursor.setNext(node);
+    }
+
     public void makeLoopAt(Integer value)
     {
         Node node = findNode(value);
@@ -129,7 +160,7 @@ class LL
 
         while(cursor != null)
         {
-            System.out.print(node.getValue() + " ");
+            System.out.print(cursor.getValue() + " ");
             cursor = cursor.getNext();
         }
         System.out.println();
