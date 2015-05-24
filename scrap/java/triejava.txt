@@ -1,0 +1,78 @@
+// trie practice
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        TrieEntry te = new TrieEntry();
+        te.addWord("is");
+        te.addWord("isis");
+        te.addWord("sumedha");
+
+
+        te.printEntries();
+    }
+}
+
+class TrieEntry
+{
+    private Character character;
+    private Map<Character, TrieEntry> characterTrieEntryMap;
+    private Integer endCount;
+
+    public TrieEntry()
+    {
+        this.character = '\0';
+        this.characterTrieEntryMap = new HashMap<>();
+        this.endCount = 0;
+    }
+
+    public TrieEntry(Character entry)
+    {
+        this.character = entry;
+        this.characterTrieEntryMap = new HashMap<>();
+        this.endCount = 0;
+    }
+
+    public void addWord(String word)
+    {
+        if (word.length() == 0)
+        {
+            ++endCount;
+            return;
+        }
+
+        Character currentCharacter = word.charAt(0);
+        TrieEntry mapEntry = characterTrieEntryMap.get(currentCharacter);
+        if (mapEntry ==  null)
+        {
+            mapEntry = new TrieEntry(currentCharacter);
+        }
+        mapEntry.addWord(word.substring(1));
+        characterTrieEntryMap.put(currentCharacter, mapEntry);
+    }
+
+    public void printEntries()
+    {
+        String currentString = "";
+        print(currentString);
+    }
+
+    private void print(String previousString)
+    {
+        String currentString = previousString + character;
+
+        for (Integer count=0; count<endCount; ++count)
+        {
+            System.out.print(currentString);
+        }
+
+        for (Map.Entry<Character, TrieEntry> entry : characterTrieEntryMap.entrySet())
+        {
+            entry.getValue().print(currentString);
+        }
+    }
+}
