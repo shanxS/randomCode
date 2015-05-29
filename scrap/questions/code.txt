@@ -25,3 +25,5 @@ Also, ccaccccaccaca is a valid substring.
 15. vertical sum of binary tree
 16. print tree vertically
 17. In a binary tree, a complete path is defined as a path from root to a leaf. The sum of all nodes on that path is defined as the sum of that path. Given a number K, we have to remove (prune the tree) nodes from the tree which lie on a path having sum less than K.
+18. Given a binary tree, find the number of pairs where sum of 2 nodes’ values equal to k
+19. reverse k nodes at a time in linked list
