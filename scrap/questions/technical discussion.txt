@@ -23,3 +23,6 @@
 4. Design a tree, in which a root can have unlimited children and write a code to print each level in separate level   
 5. Design T9 dictionary
 6. Print the anagrams present in a huge file
+7. how will you save a binary tree in a file - no assumption on binary tree
+8.  First I was asked to design a Data structure with O(1) insertion and O(1) search. I told about hashing. Then he told me to get a random number from the current list of numbers which have been inserted into my Ds. So I maintained an array storing pointers to the hash table.(Assume no Collision, he told so).Then he said O(1) deletion also. I was stuck on this I was not able to make both deletion and getRandom in O(1).After Some Discussion he moved on.
+9. A robot problem: No. of ways to reach from 0,0 to m,n in a m*n grid. I had to tell recursive function only. No code required.
