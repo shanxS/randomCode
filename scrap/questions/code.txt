@@ -22,3 +22,5 @@
 14. Find the longest substring in a string with exactly 2 unique characters. The substring should not contain more than two different chars. in O(n)
 So, aaaaabbaaa is a valid substring
 Also, ccaccccaccaca is a valid substring.
+15. vertical sum of binary tree
+16. print tree vertically
