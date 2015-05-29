@@ -8,4 +8,8 @@
     iteration3:       7  -15     sum =-8 
 4. find nearest leaf node from given node in binary tree
 5. a[] = {a,b,c,d,e} b[]={f,g,h} result should be = af+bg+ch+df+eg
-6. 
+6. Find maximum product of subarray in given array of integers
+7. A function printMostFrequentWords, which takes in an array of strings, was given. It is required to print a list of all the 
+   letters that occurred with the highest frequency in each line of the array, followed by the frequency.
+   The list of letters should be an alphabetical list of upper case letters followed by an alphabetical list of lower case 
+   letters.
