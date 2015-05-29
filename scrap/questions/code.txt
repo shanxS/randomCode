@@ -7,4 +7,5 @@
     iteration2:     0  -7  8     sum= 1
     iteration3:       7  -15     sum =-8 
 4. find nearest leaf node from given node in binary tree
-5. 
+5. a[] = {a,b,c,d,e} b[]={f,g,h} result should be = af+bg+ch+df+eg
+6. 

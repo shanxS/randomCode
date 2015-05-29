@@ -1,3 +1,25 @@
 1. Find the first k largest numbers from large file size. Explain solution for
        a. When we have space to store K elements in RAM
        b. When we didn’t have space to store K elements in RAM
+2. Given a n-ary tree of resources arranged hierarchically. A process needs to lock a resource node in order to use it. But,
+    ? A node cannot be locked if any of its descendant or ancestor is locked.
+    I was supposed to
+    -> write the structure of node
+    -> write codes for
+    -> islock()- returns true if a given node is locked and false if it is not
+    -> lock()- locks the given node if possible and updates lock information
+    -> unlock()- unlocks the node and updates information.
+
+    Codes should be :
+    Islock –O(1)
+    Lock()- O(log n)
+    unLock()- O(log n)
+    
+    HINT: use B+ tree
+3. Print the anagrams present in a huge file (each line in file contains one word and you didn’t have any constraints like  
+   limited memory etc..) for a give string
+
+   use trie or hashmap
+4. Design a tree, in which a root can have unlimited children and write a code to print each level in separate level   
+5. Design T9 dictionary
+6. Print the anagrams present in a huge file
