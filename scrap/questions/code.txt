@@ -14,3 +14,6 @@
    The list of letters should be an alphabetical list of upper case letters followed by an alphabetical list of lower case 
    letters.
 8. www.geeksforgeeks.org/construct-a-special-tree-from-given-preorder-traversal/
+9. Delete the Kth Node from a linked list.
+10. delete nth node from linked list
+11. http://www.careercup.com/question?id=12998667
