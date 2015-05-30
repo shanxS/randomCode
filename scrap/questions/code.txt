@@ -19,9 +19,10 @@
 11. http://www.careercup.com/question?id=12998667
 12. Spiral or zigzag level order traversal of a tree.
 13. A person can jump 1 or 2 steps. No of ways of reaching the top of n stairs. (Try for O(1) space.)
-14. Find the longest substring in a string with exactly 2 unique characters. The substring should not contain more than two different chars. in O(n)
-So, aaaaabbaaa is a valid substring
-Also, ccaccccaccaca is a valid substring.
+14. Find the longest substring in a string with exactly 2 unique characters. The substring should not contain more than two 
+    different chars. in O(n)
+    So, aaaaabbaaa is a valid substring
+    Also, ccaccccaccaca is a valid substring.
 15. vertical sum of binary tree
 16. print tree vertically
 17. In a binary tree, a complete path is defined as a path from root to a leaf. The sum of all nodes on that path is defined as the sum of that path. Given a number K, we have to remove (prune the tree) nodes from the tree which lie on a path having sum less than K.
