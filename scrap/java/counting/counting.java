@@ -2,22 +2,111 @@ public class Main
 {
     public static void main(String[] er)
     {
-        Integer[] array = new Integer[]{1, 2, 3, 4, 5, 6, 7};
-        SingleLL sLL = new SingleLL();
+        Integer[] array = new Integer[]{1, 2, 3};//, 4, 5, 6, 7};
+//        SingleLL sLL = new SingleLL();
+//        for (Integer value : array)
+//        {
+//            sLL.insert(value);
+//        }
+//
+//        NthPrinterFromStart np = new NthPrinterFromStart();
+//        np.printNthWithoutSkipping(sLL.getHead(), 5);
+//        np.printNthWITHSkipping(sLL.getHead(), 5);
+//        np.printKthWithZeroIndexing(sLL.getHead(), 8);
+//        np.printWithOneIndexing(sLL.getHead(), 8);
+//
+//        NthPrinterFromBack nb = new NthPrinterFromBack();
+//        nb.printNthFromBackOneBaseIndexing(sLL.getHead(), 1);
+//        nb.printNthFromBackOneBaseIndexing(sLL.getHead(), 7);
+//        nb.printNthFromBackOneBaseIndexing(sLL.getHead(), 8);
+
+        Dll dll = new Dll();
         for (Integer value : array)
         {
-            sLL.insert(value);
+            dll.insert(value);
+        }
+        dll.printNthNodeFromFrontAndBack(1);
+        dll.printNthNodeFromFrontAndBack(2);
+        dll.printNthNodeFromFrontAndBack(3);
+    }
+}
+
+class Dll
+{
+    private Node head;
+
+    public Dll()
+    {
+        this.head = null;
+    }
+
+    public void printNthNodeFromFrontAndBack(Integer N)
+    {
+        Integer counter = N;
+        Node firstNode = head;
+        Node endNode = null;
+        Node cursor = head;
+
+        while (cursor != null)
+        {
+            if (counter > 1)
+            {
+                firstNode = (firstNode == null) ? head : firstNode.getRight();
+            }
+            if (counter <= 1)
+            {
+                endNode = (endNode == null) ? head : endNode.getRight();
+            }
+
+            --counter;
+            cursor = cursor.getRight();
         }
 
-        NthPrinterFromStart np = new NthPrinterFromStart();
-        np.printNthWithoutSkipping(sLL.getHead(), 5);
-        np.printNthWITHSkipping(sLL.getHead(), 5);
-        np.printKthWithZeroIndexing(sLL.getHead(), 8);
-        np.printWithOneIndexing(sLL.getHead(), 8);
+        if (counter > 1)
+        {
+            System.out.println("printNthNodeFromFrontAndBack not long enough");
+            return;
+        }
 
-        NthPrinterFromBack nb = new NthPrinterFromBack();
-        nb.printNthFromBackOneBaseIndexing(sLL.getHead(), 0);
-        nb.printNthFromBackOneBaseIndexing(sLL.getHead(), 7);
+        System.out.println("printNthNodeFromFrontAndBack " + firstNode.getValue() + " " + endNode.getValue());
+
+    }
+
+    public static void print(Node head)
+    {
+        Node cursor = head;
+        while(cursor.getRight() != null)
+        {
+            System.out.print(cursor.getValue() + " ");
+            cursor = cursor.getRight();
+        }
+        System.out.print(cursor.getValue() + " ");
+
+        while(cursor != null)
+        {
+            System.out.print(cursor.getValue() + " ");
+            cursor = cursor.getLeft();
+        }
+    }
+
+    public void insert(Integer value)
+    {
+        if(head == null)
+        {
+            head = new Node(value);
+        }
+        else
+        {
+            Node cursor = head;
+            while(cursor.getRight() != null)
+            {
+                cursor = cursor.getRight();
+            }
+
+            Node node = new Node(value);
+            cursor.setRight(node);
+            node.setLeft(cursor);
+        }
     }
 }
 
@@ -29,7 +118,7 @@ class NthPrinterFromBack
         Node node = null;
         while(cursor!=null)
         {
-            if (N == 0)
+            if (N == 1)
             {
                 node = head;
             }
@@ -42,7 +131,7 @@ class NthPrinterFromBack
             --N;
         }
 
-        if (N > 0)
+        if (N >= 1)
         {
             System.out.println("printNthFromBackOneBaseIndexing not long enough");
             return;
