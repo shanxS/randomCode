@@ -35,3 +35,7 @@
 24. duplicate linked list with mad pointer
 25. minimum insertions needed to convert string to palindrome
 26. gold coin problem: http://www.geeksforgeeks.org/dynamic-programming-set-31-optimal-strategy-for-a-game/
+27. print boundary and leaf nodes of binary tree
+28. counting sort
+29. adding of numbers respresented as linked list
+30. multiplying numbers represented as linked list
