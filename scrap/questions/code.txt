@@ -30,3 +30,4 @@
 19. reverse k nodes at a time in linked list
 20. merge k sorted arrays
 21. reconstruct binary tree from inorder and preorder traversal
+22. Least common ancestor of a binary tree and BST
