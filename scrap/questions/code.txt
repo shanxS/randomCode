@@ -33,3 +33,4 @@
 22. Least common ancestor of a binary tree and BST
 23. duplicate binary tree with mad pointer
 24. duplicate linked list with mad pointer
+25. minimum insertions needed to convert string to palindrome
