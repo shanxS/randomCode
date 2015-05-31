@@ -34,3 +34,4 @@
 23. duplicate binary tree with mad pointer
 24. duplicate linked list with mad pointer
 25. minimum insertions needed to convert string to palindrome
+26. gold coin problem: http://www.geeksforgeeks.org/dynamic-programming-set-31-optimal-strategy-for-a-game/
