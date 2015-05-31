@@ -31,3 +31,5 @@
 20. merge k sorted arrays
 21. reconstruct binary tree from inorder and preorder traversal
 22. Least common ancestor of a binary tree and BST
+23. duplicate binary tree with mad pointer
+24. duplicate linked list with mad pointer
