@@ -42,3 +42,4 @@
 31.  Given an array of positive numbers, find the maximum sum of a subsequence with the constraint that no 2 numbers in the sequence should be adjacent in the array. So 3 2 7 10 should return 13 (sum of 3 and 10) or 3 2 5 10 7 should return 15 (sum of 3, 5 and 7).
 I was able to give him a DP solution with a Parent array which stores thee index of the parent of every element,i hd put -1 for the first element,at the end I backtrack the array to find the all the elements.
 32. partial tree implementation for doing range queries (range sum, range max, min etc)
+33. longest sinusoidal sequence in array OR  Find longest subsequence that is zig zag OR https://www.topcoder.com/stat?c=problem_statement&pm=1259&rd=4493 In O(n) time 
