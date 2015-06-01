@@ -44,3 +44,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 32. partial tree implementation for doing range queries (range sum, range max, min etc)
 33. longest sinusoidal sequence in array OR  Find longest subsequence that is zig zag OR https://www.topcoder.com/stat?c=problem_statement&pm=1259&rd=4493 In O(n) time 
 34. valid combinations of k number of pairs of braces (set 21, r4, q5)
+35. max length of continuous sub array with at max 3 unique elements
