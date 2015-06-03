@@ -1,1 +1,5 @@
 1. operator precedence for postfix to infix
+2. aysmtotic analysis on top coder, NP, P, NP complete and NP hard from geeks for geeks
+3. sum of AP and GP
+4. LIS
+5. KMP

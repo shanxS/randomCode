@@ -46,3 +46,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 34. valid combinations of k number of pairs of braces (set 21, r4, q5)
 35. max length of continuous sub array with at max 3 unique elements
 36. max rectangular area of histogram - using stack VS using partial tree
+37. kth largest element in array
