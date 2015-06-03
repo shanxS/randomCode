@@ -47,3 +47,5 @@ I was able to give him a DP solution with a Parent array which stores thee index
 35. max length of continuous sub array with at max 3 unique elements
 36. max rectangular area of histogram - using stack VS using partial tree
 37. kth largest element in array
+38. k largest(or smallest) elements in an array - can be done as 37 was done
+39. topological sort
