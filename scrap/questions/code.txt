@@ -50,3 +50,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 38. k largest(or smallest) elements in an array - can be done as 37 was done
 39. topological sort
 40. test if array is majority array
+41. array find all the triplets which satisfy the triangle property
