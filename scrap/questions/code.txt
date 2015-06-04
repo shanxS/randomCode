@@ -54,3 +54,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 42. test if binary tree is height balanced
 43. test if given tree is subtree if of another given tree
 44. print levels of tree in bottom up manner
+45. Given an input string and a dictionary of words, find out if the input string can be segmented into a space-separated sequence of dictionary words. http://www.geeksforgeeks.org/dynamic-programming-set-32-word-break-problem/

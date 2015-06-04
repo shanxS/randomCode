@@ -30,3 +30,4 @@
 11. What is process and thread?
 12. What is copy constructor?
 13. Design parking lot.
+14. pop min element from array in O(1)
