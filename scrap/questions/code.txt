@@ -51,3 +51,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 39. topological sort
 40. test if array is majority array
 41. array find all the triplets which satisfy the triangle property
+42. test if binary tree is height balanced
