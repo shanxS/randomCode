@@ -3,3 +3,5 @@
 3. sum of AP and GP
 4. LIS
 5. KMP
+6. multiply 2 numbers represnetd as linked list
+7. definition of pre and post order traversal

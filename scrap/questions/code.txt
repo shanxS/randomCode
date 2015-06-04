@@ -52,3 +52,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 40. test if array is majority array
 41. array find all the triplets which satisfy the triangle property
 42. test if binary tree is height balanced
+43. test if given tree is subtree if of another given tree
