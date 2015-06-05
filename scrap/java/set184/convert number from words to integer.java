@@ -9,9 +9,10 @@ public class Main
     public static void main(String[] er)
     {
         WordToNumber wtn = new WordToNumber();
-        System.out.print(wtn.convert("one thousand three hundred and seventy two"));
+//        System.out.print(wtn.convert("one thousand three hundred and seventy two"));
 //        System.out.print(wtn.convert("nineteen hundred and six"));
 //        System.out.print(wtn.convert("one thousand one hundred and one"));
+//        System.out.print(wtn.convert("five hundred thousand"));
     }
 }
 
@@ -76,12 +77,17 @@ class WordToNumber
             String type = valueStack.get(cursor).type;
             if (type.equals(NUMBER))
             {
+                value = valueStack.get(cursor).value;
+
                 if (cursor + 1 < valueStack.size() && valueStack.get(cursor+1).type.equals(MULTIPLIER))
                 {
-                    value *= valueStack.get(cursor+1).value;
+                    cursor += 1;
+                    while((cursor < valueStack.size() && valueStack.get(cursor).type.equals(MULTIPLIER)))
+                    {
+                        value *= valueStack.get(cursor).value;
+                        cursor += 1;
+                    }
                     number += value;
-
-                    cursor += 2;
                 }
                 else
                 {
