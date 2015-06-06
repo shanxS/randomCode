@@ -1,1 +1,2 @@
 1. to identify unique tree get any 2 different traversal out of inorder, preorder, postorder
+2. 2^n > sum(i=0 to n) (2^i)

@@ -1,0 +1,24 @@
+// count freq. of number using - using % and /
+// code question 50
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] array = new Integer[] {1,1,1,2,2,2,3,3,3,3,4};
+        final Integer N = array.length;
+
+        for (Integer i=0; i<N; ++i)
+        {
+            array[array[i] % N] += N;
+        }
+
+        for (Integer j=0; j<N; ++j)
+        {
+            if (array[j]/N > 0)
+            {
+                System.out.println(j + " repeated " + array[j]/N);
+            }
+        }
+    }
+}
