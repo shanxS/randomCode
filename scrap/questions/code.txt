@@ -58,3 +58,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 46. line sweep - We are given an array of n points in the plane, and the problem is to find out the closest pair of points in the array.
 47. convert number from words to integer
 48. Given an array of numbers, for each number print the first number to it’s left which is greater than the current number. in O(n) https://stackoverflow.com/questions/29443997/greater-number-to-its-left
+49. In a sorted array - find two numbers who’s difference is k
