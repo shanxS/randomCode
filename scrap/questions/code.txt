@@ -67,3 +67,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 55. print all permutations of a given string
 56. find subset of elements that are selected from a given set whose sum adds up to a given number K
 57. Given an undirected graph and a number m, determine if the graph can be colored with at most m colors such that no two adjacent vertices of the graph are colored with same color. Here coloring of a graph means assignment of colors to all vertices. 
+58. Hamiltonian Path in an undirected graph is a path that visits each vertex exactly once. A Hamiltonian cycle (or Hamiltonian circuit) is a Hamiltonian Path such that there is an edge (in graph) from the last vertex to the first vertex of the Hamiltonian Path. Determine whether a given graph contains Hamiltonian Cycle or not. If it contains, then print the path
