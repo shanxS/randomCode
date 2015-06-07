@@ -64,3 +64,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 52. LCS for 2 stirngs
 53. Longest Even Length Substring such that Sum of First and Second Half is same
 54. all possible strings that can be made by placing spaces
+55. print all permutations of a given string
