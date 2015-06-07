@@ -62,3 +62,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 50. count freq. of number using (binary search || for array where max elemnt is less than number of elements )
 51. test if right and left binary subtrees are mirror images
 52. LCS for 2 stirngs
+53. Longest Even Length Substring such that Sum of First and Second Half is same
