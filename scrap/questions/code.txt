@@ -66,3 +66,4 @@ I was able to give him a DP solution with a Parent array which stores thee index
 54. all possible strings that can be made by placing spaces
 55. print all permutations of a given string
 56. find subset of elements that are selected from a given set whose sum adds up to a given number K
+57. Given an undirected graph and a number m, determine if the graph can be colored with at most m colors such that no two adjacent vertices of the graph are colored with same color. Here coloring of a graph means assignment of colors to all vertices. 
