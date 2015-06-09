@@ -12,3 +12,4 @@
         result = 31 * result + c;
         return result;
     }
+9. min of 3: Math.min(a, Math.min(b, c)) 
