@@ -90,3 +90,4 @@ assign numbers ot lettrs
 71. Given a Binary Tree, convert it to a Binary Search Tree. The conversion must be done in such a way that keeps the original structure of Binary Tree. 
 72. Total number of possible Binary Search Trees with n keys - catlan number
 73. convert sorted linked list to BST
+74. Convert a BST to a Binary Tree such that sum of all greater keys is added to every key
