@@ -88,3 +88,4 @@ assign numbers ot lettrs
 69. Inorder predecessor and successor for a given key in BST
 70. Transform a BST to greater sum tree - Given a BST, transform it into greater sum tree where each node contains sum of all nodes greater than that node.
 71. Given a Binary Tree, convert it to a Binary Search Tree. The conversion must be done in such a way that keeps the original structure of Binary Tree. 
+72. Total number of possible Binary Search Trees with n keys - catlan number
