@@ -93,3 +93,4 @@ assign numbers ot lettrs
 74. Convert a BST to a Binary Tree such that sum of all greater keys is added to every key
 75. Floor and Ceil from a BST - given a number, find 
 76. find 2 swapped nodes in BST
+77. given preorder traversal of BST - test if every node has 1 child
