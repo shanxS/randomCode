@@ -91,3 +91,5 @@ assign numbers ot lettrs
 72. Total number of possible Binary Search Trees with n keys - catlan number
 73. convert sorted linked list to BST
 74. Convert a BST to a Binary Tree such that sum of all greater keys is added to every key
+75. Floor and Ceil from a BST - given a number, find 
+76. find 2 swapped nodes in BST
