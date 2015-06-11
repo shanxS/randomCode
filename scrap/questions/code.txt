@@ -94,3 +94,4 @@ assign numbers ot lettrs
 75. Floor and Ceil from a BST - given a number, find 
 76. find 2 swapped nodes in BST
 77. given preorder traversal of BST - test if every node has 1 child
+78. Remove BST keys outside the given range
