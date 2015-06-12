@@ -100,3 +100,4 @@ assign numbers ot lettrs
 81. convert sorted array to BST
 82. reverse BST
 83. Sorted order printing of a given array that represents a BST - using recursion - using stack and loop
+84. delete node form BST
