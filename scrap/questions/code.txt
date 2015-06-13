@@ -113,3 +113,4 @@ assign numbers ot lettrs
 94. Check if two nodes are cousins in a Binary Tree - cousin nodes are at same level and have different parents
 95. Reverse alternate levels of a perfect binary tree
 96. find sum of path between 2 nodes in binary tree
+97. Print all nodes at distance k from a given node
