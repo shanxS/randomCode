@@ -114,3 +114,4 @@ assign numbers ot lettrs
 95. Reverse alternate levels of a perfect binary tree
 96. find sum of path between 2 nodes in binary tree
 97. Print all nodes at distance k from a given node
+98. Print all nodes that are at distance k from a leaf node
