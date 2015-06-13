@@ -102,3 +102,4 @@ assign numbers ot lettrs
 83. Sorted order printing of a given array that represents a BST - using recursion - using stack and loop
 84. delete node form BST
 85. inorder, postorder, preorder and leveloreder traversal of binary tree using iteration
+86. Remove nodes on root to leaf paths of length < K
