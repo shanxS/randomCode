@@ -103,3 +103,4 @@ assign numbers ot lettrs
 84. delete node form BST
 85. inorder, postorder, preorder and leveloreder traversal of binary tree using iteration
 86. Remove nodes on root to leaf paths of length < K
+87. Given a binary tree - remove all the half nodes
