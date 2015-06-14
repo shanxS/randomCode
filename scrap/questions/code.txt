@@ -121,3 +121,4 @@ assign numbers ot lettrs
 102. given pre and inorder traversal - print post order traversal
 103. find ancestors of node without recusion
 104. Find all possible interpretations of an array of digits - http://www.geeksforgeeks.org/find-all-possible-interpretations/
+105. morris inorder tree traversal
