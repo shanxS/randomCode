@@ -122,3 +122,4 @@ assign numbers ot lettrs
 103. find ancestors of node without recusion
 104. Find all possible interpretations of an array of digits - http://www.geeksforgeeks.org/find-all-possible-interpretations/
 105. morris inorder tree traversal
+106. given pre and post order for complete binary tree - make tree: http://www.geeksforgeeks.org/full-and-complete-binary-tree-from-given-preorder-and-postorder-traversals/
