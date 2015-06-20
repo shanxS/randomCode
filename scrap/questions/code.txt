@@ -125,3 +125,4 @@ assign numbers ot lettrs
 106. given pre and post order for complete binary tree - make tree: http://www.geeksforgeeks.org/full-and-complete-binary-tree-from-given-preorder-and-postorder-traversals/
 107. serach in rotated sorted array - finally I have it
 108. Maximum sum such that no two elements are adjacent
+109. Sort an array of 0s 1s and 2s
