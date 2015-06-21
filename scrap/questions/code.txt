@@ -126,3 +126,4 @@ assign numbers ot lettrs
 107. serach in rotated sorted array - finally I have it
 108. Maximum sum such that no two elements are adjacent
 109. Sort an array of 0s 1s and 2s
+110. find multiple repeated numbers in array of size n with values in range 1 to n
