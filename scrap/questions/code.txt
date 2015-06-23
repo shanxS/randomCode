@@ -132,3 +132,4 @@ assign numbers ot lettrs
 113. Find subarray with given sum
 114. Find the two numbers with odd occurrences in an unsorted array
 115. Longest discontinous Bitonic Subsequence
+116. in array find sorted subsequence of size 3 in linear time
