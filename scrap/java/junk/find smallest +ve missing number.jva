@@ -1,0 +1,47 @@
+// find smallest +ve missing number
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] array = {2, 3, 7, 6, 8, -1, -10, -3, -15};
+
+        Integer cursor = 0;
+        while (cursor < array.length)
+        {
+            if (array[cursor] < 0)
+            {
+                ++cursor;
+            }
+            else
+            {
+                Integer tmp = array[array[cursor]];
+
+                array[array[cursor]] = -1*array[cursor];
+                if (tmp == 0 && cursor == 0)
+                {
+                    array[0] = 0;
+                    ++cursor;
+                }
+                else if (tmp > 0)
+                {
+                    array[cursor] = tmp;
+                }
+                else
+                {
+                    ++cursor;
+                }
+            }
+        }
+
+        cursor = 0;
+        while (cursor < array.length)
+        {
+            if (array[cursor] > 0 || array[cursor] != -1*(cursor))
+            {
+                System.out.println(cursor + " " + array[cursor]);
+            }
+            ++cursor;
+        }
+    }
+}
