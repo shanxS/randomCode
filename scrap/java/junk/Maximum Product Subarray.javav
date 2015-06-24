@@ -1,0 +1,85 @@
+// Maximum Product Subarray
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] array = {0,1,-2,-3,-10,0,1,-100,0,2,-10,-10,-1};//{-1, 0, -2, 0};//{1, -2, -3, 0, 7, -8, -2};//{6, -3, -10, 0, 2};//{-2, -3, 0, -2, -40};//{-1, -3, -10, 0, 60};
+        Integer maxSoFar = null;
+        Integer currentMax = null;
+        Integer leastNegative = null;
+        Integer negaiveCoount = 0;
+
+        Integer cursor = 0;
+        while (cursor < array.length)
+        {
+            if (array[cursor] == 0 && currentMax != null)
+            {
+                if (currentMax < 0 && leastNegative != null && negaiveCoount > 1)
+                {
+                    currentMax /= leastNegative;
+                }
+                if (currentMax > 0)
+                {
+                    if (maxSoFar == null)
+                    {
+                        maxSoFar = currentMax;
+                    }
+                    else  if (maxSoFar < currentMax)
+                    {
+                        maxSoFar = currentMax;
+                    }
+                }
+
+                currentMax = null;
+                leastNegative = null;
+                negaiveCoount = 0;
+            }
+            else if (array[cursor] != 0)
+            {
+                if (currentMax == null)
+                {
+                    currentMax = array[cursor];
+                }
+                else
+                {
+                    currentMax *= array[cursor];
+                }
+
+                if (array[cursor] < 0)
+                {
+                    ++negaiveCoount;
+                    if (leastNegative == null)
+                    {
+                        leastNegative = array[cursor];
+                    }
+                    else if (leastNegative < array[cursor])
+                    {
+                        leastNegative = array[cursor];
+                    }
+                }
+            }
+
+            ++cursor;
+        }
+        if (currentMax != null)
+        {
+            if (currentMax < 0 && leastNegative != null && negaiveCoount > 1)
+            {
+                currentMax /= leastNegative;
+            }
+            if (currentMax > 0)
+            {
+                if (maxSoFar == null)
+                {
+                    maxSoFar = currentMax;
+                } else if (maxSoFar < currentMax)
+                {
+                    maxSoFar = currentMax;
+                }
+            }
+        }
+
+        System.out.print(maxSoFar);
+    }
+}
