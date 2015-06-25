@@ -50,7 +50,7 @@ I was able to give him a DP solution with a Parent array which stores thee index
 38. k largest(or smallest) elements in an array - can be done as 37 was done
 39. topological sort
 40. test if array is majority array
-41. array find all the triplets which satisfy the triangle property
+41. array find all the triplets which satisfy the triangle property - think it through - can be done in less than n^2 - dont repeat computation
 42. test if binary tree is height balanced
 43. test if given tree is subtree if of another given tree
 44. print levels of tree in bottom up manner

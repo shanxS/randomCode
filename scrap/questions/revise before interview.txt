@@ -17,3 +17,6 @@
 11. in array or seq. swapping N with 0, N-1 with 1, N-2 with 2 and so on. Essentially reverses the seq :)
 12. if you are dividing range 0 to N by halves - you have infinite loop for 0 to 1 - to check for it test if range has lenght 1 or more than 1
 13. for any binary tree inorder + (post or pre or level) order can uniquly identify it. BUT for strict or perfect (not complete) binary tree - only inoder and preorder are enough
+14. generate random number generator:
+Random randomGenerator = new Random();
+int randomInt = randomGenerator.nextInt(100); // generates random integers in the range 0..99
