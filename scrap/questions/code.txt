@@ -136,3 +136,6 @@ assign numbers ot lettrs
 117. Maximum Length Chain of Pairs
 118. Maximum circular subarray sum - modify kadane to do this - let the solution be not beautiful
 119. Arrange given numbers to form the biggest number
+120. Given an an unsorted array, sort the given array. You are allowed to do only following operation on array.
+    flip(arr, i): Reverse array from 0 to i 
+    the goal is to sort the sequence in as few reversals as possible. 
