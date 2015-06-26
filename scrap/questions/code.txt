@@ -139,3 +139,5 @@ assign numbers ot lettrs
 120. Given an an unsorted array, sort the given array. You are allowed to do only following operation on array.
     flip(arr, i): Reverse array from 0 to i 
     the goal is to sort the sequence in as few reversals as possible. 
+121. Imagine a hypothetical machine where flip(i) always takes O(1) time. Write an efficient program for sorting a given array in O(nLogn) time on the given machine. flip is given by:
+flip(arr, i): Reverse array from 0 to i 
