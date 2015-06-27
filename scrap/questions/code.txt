@@ -141,3 +141,5 @@ assign numbers ot lettrs
     the goal is to sort the sequence in as few reversals as possible. 
 121. Imagine a hypothetical machine where flip(i) always takes O(1) time. Write an efficient program for sorting a given array in O(nLogn) time on the given machine. flip is given by:
 flip(arr, i): Reverse array from 0 to i 
+122. Stable Marriage Problem - http://www.geeksforgeeks.org/stable-marriage-problem/
+http://www.csee.wvu.edu/~ksmani/courses/fa01/random/lecnotes/lecture5.pdf
