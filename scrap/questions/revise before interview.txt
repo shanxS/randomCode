@@ -31,3 +31,5 @@ private static int compare(Integer value1, Integer value2)
 }
 
 16. I know you want ot impress but dont strive to give best solution in 1st attempt - giev a working solution first and them optimise it
+
+17. if a ascending array is rotated and you are searching for something look out for the relation between the current vlaue and relative ends - for example: http://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array/
