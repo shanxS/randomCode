@@ -20,3 +20,14 @@
 14. generate random number generator:
 Random randomGenerator = new Random();
 int randomInt = randomGenerator.nextInt(100); // generates random integers in the range 0..99
+15. to make max possible number with given numbers, like {54, 546, 548, 60} 
+you need a comparison function otherwise you will endup using stack and time complexity will be very high
+private static int compare(Integer value1, Integer value2)
+{
+    String X = value1 + "" + value2;
+    String Y = value2 + "" + value1;
+
+    return X.compareTo(Y);
+}
+
+16. I know you want ot impress but dont strive to give best solution in 1st attempt - giev a working solution first and them optimise it
