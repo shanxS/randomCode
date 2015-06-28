@@ -32,4 +32,16 @@ private static int compare(Integer value1, Integer value2)
 
 16. I know you want ot impress but dont strive to give best solution in 1st attempt - giev a working solution first and them optimise it
 
-17. if a ascending array is rotated and you are searching for something look out for the relation between the current vlaue and relative ends - for example: http://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array/
+17. if a sorting order of array is known and array is rotated and you are searching for something look out for the relation between the current vlaue and relative ends - for example: http://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array/
+
+Amother example: in ascending sorted array - the inflexion point (smallest number) is the only one which has a predecessor which is larger than this number and vice versa for descending sorted array
+
+18. Sorry, this is a long list of things of long-ish topics:
+    - thread vs runnable
+    - executor
+    - thread pool
+    - synchronised
+    - http://javarevisited.blogspot.in/2011/07/java-multi-threading-interview.html
+    - Serialization and related concepts
+    
+19. quick review:http://www.geeksforgeeks.org/top-25-interview-questions/
