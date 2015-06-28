@@ -143,3 +143,4 @@ assign numbers ot lettrs
 flip(arr, i): Reverse array from 0 to i 
 122. Stable Marriage Problem - http://www.geeksforgeeks.org/stable-marriage-problem/
 http://www.csee.wvu.edu/~ksmani/courses/fa01/random/lecnotes/lecture5.pdf
+123. Find the smallest positive integer value that cannot be represented as sum of any subset of a given array
