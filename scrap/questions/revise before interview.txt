@@ -45,3 +45,5 @@ Amother example: in ascending sorted array - the inflexion point (smallest numbe
     - Serialization and related concepts
     
 19. quick review:http://www.geeksforgeeks.org/top-25-interview-questions/
+
+20. when you see some sort of dependcy between elements - think topological sort
