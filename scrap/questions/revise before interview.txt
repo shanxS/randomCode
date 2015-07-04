@@ -47,3 +47,7 @@ Amother example: in ascending sorted array - the inflexion point (smallest numbe
 19. quick review:http://www.geeksforgeeks.org/top-25-interview-questions/
 
 20. when you see some sort of dependcy between elements - think topological sort
+
+21. In graph theory:
+    a. biconnected graph -> graph in which there is no 'single point of failure'
+    b. strongly connected -> DIRECTED graph where you can reach any node from any given node
