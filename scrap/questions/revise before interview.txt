@@ -51,3 +51,12 @@ Amother example: in ascending sorted array - the inflexion point (smallest numbe
 21. In graph theory:
     a. biconnected graph -> graph in which there is no 'single point of failure'
     b. strongly connected -> DIRECTED graph where you can reach any node from any given node
+    c. cycle detection is all about having a back edge in graph
+    d. revise trajan's algo - quite useful for various cases: 
+        http://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/
+        http://www.geeksforgeeks.org/articulation-points-or-cut-vertices-in-a-graph/
+        http://www.geeksforgeeks.org/bridge-in-a-graph/
+        http://www.geeksforgeeks.org/biconnectivity-in-a-graph/
+    e. classification of nodes based on timing and other advanced material (for what is already quite advance - but hey we 
+        aren;t we turnig up the game ?)
+        https://people.csail.mit.edu/thies/6.046-web/recitation9.txt
