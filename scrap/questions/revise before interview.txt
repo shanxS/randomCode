@@ -60,3 +60,5 @@ Amother example: in ascending sorted array - the inflexion point (smallest numbe
     e. classification of nodes based on timing and other advanced material (for what is already quite advance - but hey we 
         aren;t we turnig up the game ?)
         https://people.csail.mit.edu/thies/6.046-web/recitation9.txt
+        
+22. if you are counting number of elements (as in count of subNodes in union find DS) init intial count with 1 as oopposed to 0 - because 0+0 will always yeild 0 and count will never increase
