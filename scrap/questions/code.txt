@@ -145,3 +145,5 @@ flip(arr, i): Reverse array from 0 to i
 http://www.csee.wvu.edu/~ksmani/courses/fa01/random/lecnotes/lecture5.pdf
 123. Find the smallest positive integer value that cannot be represented as sum of any subset of a given array
 124. implement radix sort
+125. you will love this: doubly linked list which has single pointer :) this is k known as XOR LL http://www.geeksforgeeks.org/xor-linked-list-a-memory-efficient-doubly-linked-list-set-1/
+126. implement hash map with time out: http://stackoverflow.com/a/4724354
