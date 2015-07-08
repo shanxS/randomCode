@@ -51,7 +51,7 @@ Amother example: in ascending sorted array - the inflexion point (smallest numbe
 21. In graph theory:
     a. biconnected graph -> graph in which there is no 'single point of failure'
     b. strongly connected -> DIRECTED graph where you can reach any node from any given node
-    c. cycle detection is all about having a back edge in graph
+    c. cycle detection is all about having a back edge in DIRECTED graph
     d. revise trajan's algo - quite useful for various cases: 
         http://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/
         http://www.geeksforgeeks.org/articulation-points-or-cut-vertices-in-a-graph/
@@ -62,3 +62,5 @@ Amother example: in ascending sorted array - the inflexion point (smallest numbe
         https://people.csail.mit.edu/thies/6.046-web/recitation9.txt
         
 22. if you are counting number of elements (as in count of subNodes in union find DS) init intial count with 1 as oopposed to 0 - because 0+0 will always yeild 0 and count will never increase
+
+23. thought: wehre ever we have a hiearchy between actors in system and there no cycle - a graph can be made and topological search can be performed to get hiearch - source: skiena "Stop and Think: Ordering the Sequence"

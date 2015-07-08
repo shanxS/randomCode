@@ -1,0 +1,83 @@
+// Find all possible words in a board of characters
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main
+{
+    private static char[][] boggle = {
+            {'G','I','Z'},
+            {'U','E','K'},
+            {'Q','S','E'}
+    };
+    private final static Integer count = boggle.length;
+    private static List<String> dic;
+    private final static Integer wordLength = 8;
+
+    public static void main(String[] er)
+    {
+        dic = new ArrayList<>();
+        dic.add("GEEKS");
+        dic.add("FOR");
+        dic.add("QUIZ");
+        dic.add("GO");
+
+        for (Integer r=0; r<count; ++r)
+        {
+            for (Integer c=0; c<count; ++c)
+            {
+                findFor(new Location(r,c), new boolean[count][count], new String());
+            }
+        }
+    }
+
+    private static void findFor(Location thisLocation, boolean[][] visited, String str)
+    {
+        String thisStr = new String(str) + boggle[thisLocation.r][thisLocation.c];
+        testWord(thisStr);
+        visited[thisLocation.r][thisLocation.c] = true;
+
+        for (Integer r=0; r<count; ++r)
+        {
+            for (Integer c=0; c<count; ++c)
+            {
+                if (!visited[r][c])
+                {
+                    findFor(new Location(r, c), visited, thisStr);
+                }
+            }
+        }
+
+        visited[thisLocation.r][thisLocation.c] = false;
+    }
+
+    private static void testWord(String thisStr)
+    {
+        if (dic.contains(thisStr))
+        {
+            System.out.println("found " + thisStr);
+        }
+    }
+
+    private static class Location
+    {
+        Integer r,c;
+        public Location(Integer r, Integer c)
+        {
+            this.r = r;
+            this.c = c;
+        }
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (o instanceof  Location)
+            {
+                Location otherLocation = (Location) o;
+                return otherLocation.c == c && otherLocation.r == r;
+            }
+
+            return false;
+        }
+    }
+}
