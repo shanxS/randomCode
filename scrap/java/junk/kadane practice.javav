@@ -1,0 +1,42 @@
+// kadane practice
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {-2, -3, 4, -1, -2, 1, 5, -3};
+
+        Integer maxSoFar = Integer.MIN_VALUE;
+        Integer startIndex = null;
+        Integer endIndex = null;
+        Integer cursor = 0;
+        Integer currnetMax = ar[0];
+        Integer currentStart = 0, currentEnd = 0;
+
+        while(cursor < ar.length)
+        {
+            if (maxSoFar < currnetMax)
+            {
+                maxSoFar = currnetMax;
+                startIndex = currentStart;
+                endIndex = currentEnd;
+            }
+
+            if (currnetMax < 0)
+            {
+                currnetMax = ar[cursor];
+                currentEnd = cursor;
+                currentStart = cursor;
+            }
+            else
+            {
+                currnetMax += ar[cursor];
+                currentEnd = cursor;
+            }
+
+            ++cursor;
+        }
+
+        System.out.print(maxSoFar + " " + startIndex + " " + endIndex);
+    }
+}
