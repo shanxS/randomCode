@@ -147,3 +147,4 @@ http://www.csee.wvu.edu/~ksmani/courses/fa01/random/lecnotes/lecture5.pdf
 124. implement radix sort
 125. you will love this: doubly linked list which has single pointer :) this is k known as XOR LL http://www.geeksforgeeks.org/xor-linked-list-a-memory-efficient-doubly-linked-list-set-1/
 126. implement hash map with time out: http://stackoverflow.com/a/4724354
+127. Maximum size square sub-matrix with all 1s
