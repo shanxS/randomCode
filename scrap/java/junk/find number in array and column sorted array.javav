@@ -1,0 +1,38 @@
+// find number in array and column sorted array
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[][] ar = { {10, 20, 30, 40},
+            {15, 25, 35, 45},
+            {27, 29, 37, 48},
+            {32, 33, 39, 50},
+        };
+        final Integer target = 50;
+        final Integer numCount = ar.length;
+
+        Integer r=0, c=0;
+        while (r<numCount && c<numCount)
+        {
+            if (ar[r][c] == target)
+            {
+                break;
+            }
+            else if (r<numCount-1 && ar[r+1][c] <= target)
+            {
+                ++r;
+            }
+            else if (c<numCount-1 && ar[r][c+1] <= target)
+            {
+                ++c;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        System.out.print("nearest nubmer found is " + ar[r][c]);
+    }
+}
