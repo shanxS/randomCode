@@ -64,3 +64,5 @@ Amother example: in ascending sorted array - the inflexion point (smallest numbe
 22. if you are counting number of elements (as in count of subNodes in union find DS) init intial count with 1 as oopposed to 0 - because 0+0 will always yeild 0 and count will never increase
 
 23. thought: wehre ever we have a hiearchy between actors in system and there no cycle - a graph can be made and topological search can be performed to get hiearch - source: skiena "Stop and Think: Ordering the Sequence"
+24. if you are updating some external value in starting of the loop make sure you update it just after loop is over - otherwise you will end up missing last update: example see https://github.com/shanxS/randomCode/commit/99eeab881080f691452899ab1c8bebf5ce219b2a
+you have missed updating after the loop
