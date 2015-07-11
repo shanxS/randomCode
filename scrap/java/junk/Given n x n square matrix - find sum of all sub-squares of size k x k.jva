@@ -1,0 +1,49 @@
+// Given n x n square matrix - find sum of all sub-squares of size k x k
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[][] ar = {
+                {1, 1, 1, 1, 1},
+                {2, 2, 2, 2, 2},
+                {3, 3, 3, 3, 3},
+                {4, 4, 4, 4, 4},
+                {5, 5, 5, 5, 5},
+        };
+        final Integer R = ar.length;
+        final Integer C = ar[0].length;
+        final Integer k = 2;
+
+        for (Integer copyR = 0; copyR<=k; ++copyR)
+        {
+            for (Integer r=copyR+1; r<=copyR+k && r<R; ++r)
+            {
+                for (Integer c=0; c<C; ++c)
+                {
+                    ar[copyR][c] += ar[r][c];
+                }
+            }
+        }
+
+        for (Integer copyC=0; copyC<=k; ++copyC)
+        {
+            for (Integer c=copyC+1; c<=copyC+k && c<C; ++c)
+            {
+                for (Integer r=0; r<=k; ++r)
+                {
+                    ar[r][copyC] += ar[r][c];
+                }
+            }
+        }
+
+        for (Integer r=0; r<=k; ++r)
+        {
+            for (Integer c=0; c<=k; ++c)
+            {
+                System.out.print(ar[r][c] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
