@@ -1,0 +1,87 @@
+// median of 2 sorted arrays of same size
+
+public class Main
+{
+    private static Integer[] ar1 = {1, 12, 15, 26, 38};
+    private static Integer size1 = ar1.length;
+    private static Integer start1 = 0;
+
+    private static Integer[] ar2 = {2, 13, 17, 30, 45};
+    private static Integer size2 = ar2.length;
+    private static Integer start2 = 0;
+
+    public static void main(String[] er)
+    {
+        System.out.print(findMedian());
+    }
+
+    private static Integer findMedian()
+    {
+        Integer median1 = median(ar1, start1, size1);
+        Integer median2 = median(ar2, start2, size2);
+
+        while (size1 > 2 && median1 != median2)
+        {
+            if (median1 > median2)
+            {
+                if (size1%2 == 0)
+                {
+                    size1 = (size1/2) + 1;
+
+                    start2 += (size2/2)-1;
+                    size2 = (size2/2) + 1;
+                }
+                else
+                {
+                    size1 = (size1/2) + 1;
+
+                    start2 += size2/2;
+                    size2 = (size2/2) + 1;
+                }
+            }
+            else if (median1 < median2)
+            {
+                if (size1%2 == 0)
+                {
+                    size2 = (size2/2) + 1;
+
+                    start1 += (size1/2)-1;
+                    size1 = (size1/2) + 1;
+                }
+                else
+                {
+                    size2 = (size2/2) + 1;
+
+                    start1 += size1/2;
+                    size1 = (size1/2) + 1;
+                }
+            }
+
+            median1 = median(ar1, start1, size1);
+            median2 = median(ar2, start2, size2);
+        }
+
+        if (size1 == 2 && median1 != median2)
+        {
+            Integer end1 = start1 + 1;
+            Integer end2 = start2 + 1;
+
+            return (Math.min(ar1[end1], ar2[end2]) + Math.max(ar1[start1], ar2[start2]))/2;
+        }
+
+        return median1;
+    }
+
+    private static Integer median(Integer[] ar, Integer start, Integer size)
+    {
+        Integer mid = size/2;
+        if (size%2 == 0)
+        {
+            return (ar[start+mid] + ar[start+mid-1])/2;
+        }
+        else
+        {
+            return ar[start+mid];
+        }
+    }
+}
