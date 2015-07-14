@@ -150,3 +150,5 @@ http://www.csee.wvu.edu/~ksmani/courses/fa01/random/lecnotes/lecture5.pdf
 127. Maximum size square sub-matrix with all 1s
 128. Maximum sum rectangle in a 2D matrix
 129. median of 2 sorted array of different sizes in logn time
+130. building brides for matching pair of cities
+    https://stackoverflow.com/questions/7288585/building-bridges-problem-how-to-apply-longest-increasing-subsequence
