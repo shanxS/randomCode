@@ -1,0 +1,71 @@
+// biggest square matrix with 1
+
+public class Main
+{
+    private static Integer[][] ar = {
+            {0, 1, 1, 0, 1},
+            {1, 1, 0, 1, 0},
+            {0, 1, 1, 1, 0},
+            {1, 1, 1, 1, 0},
+            {1, 1, 1, 1, 1},
+            {0, 0, 0, 0, 0}
+    };
+
+    private static Integer max;
+    private static Integer[] cord;
+
+    public static void main(String[] er)
+    {
+        Integer r = 1;
+        final Integer R = ar.length;
+        final Integer C = ar[0].length;
+        Integer c = 1;
+        ar[r][c] = process(r, c);
+        max = ar[r][c];
+        cord = new Integer[2];
+        cord[0] = r;
+        cord[1] = c;
+
+        while (c<C)
+        {
+            r = 1;
+            while (r < R)
+            {
+                ar[r][c] = process(r, c);
+                if (max < ar[r][c])
+                {
+                    max = ar[r][c];
+                    cord[0] = r;
+                    cord[1] = c;
+                }
+
+                ++r;
+            }
+            ++c;
+        }
+
+        for (Integer i=0; i<R; ++i)
+        {
+            for (Integer j=0; j<C; ++j)
+            {
+                System.out.print(ar[i][j] +  " ");
+            }
+
+            System.out.println();
+        }
+
+        System.out.print(max + " " + cord[0] + " " + cord[1]);
+    }
+
+    private static int process(Integer r, Integer c)
+    {
+        if (ar[r][c] != 0)
+        {
+            return ar[r][c] + Math.min(ar[r-1][c], Math.min(ar[r][c-1], ar[r-1][c-1]));
+        }
+        else
+        {
+            return ar[r][c];
+        }
+    }
+}
