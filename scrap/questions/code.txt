@@ -152,4 +152,4 @@ http://www.csee.wvu.edu/~ksmani/courses/fa01/random/lecnotes/lecture5.pdf
 129. median of 2 sorted array of different sizes in logn time
 130. building brides for matching pair of cities
     https://stackoverflow.com/questions/7288585/building-bridges-problem-how-to-apply-longest-increasing-subsequence
-131. max product sum    
+131. max product sum - https://stackoverflow.com/questions/18839769/the-max-product-of-consecutive-elements-in-an-array
