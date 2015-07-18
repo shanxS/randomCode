@@ -1,0 +1,43 @@
+// game optimiser
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {5, 3, 7, 10};
+
+        MaxValue mv = new MaxValue();
+        System.out.print(mv.find(ar));
+    }
+}
+
+class MaxValue
+{
+    private Integer[] row;
+
+    public Integer find(Integer[] row)
+    {
+        this.row = row;
+        return Math.max(row[0] + findFor(1, row.length-1),
+                row[row.length-1] + findFor(0, row.length-2));
+    }
+
+    private Integer findFor(Integer start, Integer end)
+    {
+        if (start >= end)
+        {
+            return 0;
+        }
+
+        if (row[start] > row[end])
+        {
+            return Math.max(row[start+1] + findFor(start + 2, end),
+                    row[end] + findFor(start + 1, end-1));
+        }
+        else
+        {
+            return Math.max(row[start] + findFor(start + 1, end-1),
+                    row[end-1] + findFor(start, end-2));
+        }
+    }
+}
