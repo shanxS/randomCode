@@ -1,0 +1,77 @@
+// word wrap problem
+
+public class Main
+{
+    private Integer maxSize;
+    private Integer[] wordCosts;
+
+    public static void main(String[] er)
+    {
+        Main obj = new Main();
+//        System.out.print(obj.compteCost(6, "aaa bb cc ddddd"));
+        System.out.print(obj.compteCost(15, "Geeks for Geeks presents word wrap problem"));
+    }
+
+    private Integer compteCost(Integer size, String s)
+    {
+        String[] strings = s.split(" ");
+        wordCosts = new Integer[strings.length];
+        this.maxSize = size;
+        for (Integer i=0; i<strings.length; ++i)
+        {
+            wordCosts[i] = strings[i].length();
+        }
+
+        return compteMinCostFrom(0, wordCosts.length-1);
+    }
+
+    private Integer compteMinCostFrom(Integer start, Integer end)
+    {
+        if (start > end)
+        {
+            return 0;
+        }
+        if (start == end)
+        {
+            return maxSize - wordCosts[start];
+        }
+
+        Integer minCost = Integer.MAX_VALUE;
+        Integer cursor = start;
+        Integer subCost = cost(start, cursor);
+        while (cursor<=end &&  subCost <= maxSize)
+        {
+            Integer nextCost = compteMinCostFrom(cursor+1, end);
+            if (nextCost != Integer.MAX_VALUE)
+            {
+                minCost = Math.min(minCost, (maxSize - subCost) + nextCost);
+            }
+
+            ++cursor;
+            if (cursor <= end)
+            {
+                subCost = cost(start, cursor);
+            }
+        }
+
+        return minCost;
+    }
+
+    private Integer cost(Integer start, Integer end)
+    {
+        if (start == end)
+        {
+            return wordCosts[start];
+        }
+
+        Integer size = 0;
+        for (Integer i=start; i<=end; ++i)
+        {
+            size += wordCosts[i];
+        }
+
+        size += end-start;
+
+        return size;
+    }
+}
