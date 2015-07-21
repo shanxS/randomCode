@@ -1,0 +1,53 @@
+// test if 2 nodes are connected
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[][] ar = {
+                {0,1,1,0},
+                {0,0,1,0},
+                {1,0,0,1},
+                {0,0,0,1}
+        };
+
+        PathFinder pf = new PathFinder();
+        pf.findPathFrom(ar, 3);
+    }
+}
+
+class PathFinder
+{
+    public void findPathFrom(Integer[][] path, Integer start)
+    {
+        boolean[] visited = new boolean[path.length];
+
+        Queue<Integer> que = new ArrayDeque<>();
+        que.add(start);
+
+        while (que.size() > 0)
+        {
+            Integer thisNode = que.remove();
+            visited[thisNode] = true;
+
+            for (Integer child=0; child< path.length; ++child)
+            {
+                if (!visited[child] && path[thisNode][child] == 1)
+                {
+                    que.add(child);
+                }
+            }
+        }
+
+        for (Integer i=0;i < path.length; ++i)
+        {
+            if (visited[i])
+            {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
