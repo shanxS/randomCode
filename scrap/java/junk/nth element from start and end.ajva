@@ -1,0 +1,90 @@
+// nth element from start and end
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {1,2,3,4,5};
+        LLUtil llUtil = new LLUtil();
+        Node head = llUtil.make(ar);
+        llUtil.printNthBoth(head, 5);
+    }
+}
+
+class LLUtil
+{
+    public Node make(Integer[] ar)
+    {
+        Node head = new Node(ar[0]);
+        Node cursor = head;
+        for (Integer i=1; i<ar.length; ++i)
+        {
+            cursor.setNext(new Node(ar[i]));
+            cursor = cursor.getNext();
+        }
+
+        return head;
+    }
+
+    public void printNthBoth (Node head, Integer n)
+    {
+        final Integer nCache = n;
+        Node cursor = head;
+        Node first = null, last = null;
+
+        while (cursor != null)
+        {
+            if (n == 1)
+            {
+                first = cursor;
+                last = head;
+            }
+            else if (n < 1)
+            {
+                last = last.getNext();
+            }
+
+            --n;
+            cursor = cursor.getNext();
+        }
+
+        if (n >= 1 && cursor == null)
+        {
+            System.out.println("too small LL");
+            return;
+        }
+
+
+        if (n > (nCache-1)*(-1))
+        {
+            System.out.println("reversed");
+        }
+        System.out.print(first.getValue() + " " + last.getValue());
+    }
+}
+
+class Node
+{
+    private Node next;
+    private Integer value;
+
+    public Node(Integer v)
+    {
+        value = v;
+    }
+
+    public Integer getValue()
+    {
+        return value;
+    }
+
+    public Node getNext()
+    {
+        return next;
+    }
+
+    public void setNext(Node next)
+    {
+        this.next = next;
+    }
+}
