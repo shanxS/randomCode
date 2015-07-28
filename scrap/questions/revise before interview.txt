@@ -12,6 +12,8 @@
         result = 31 * result + c;
         return result;
     }
+    
+    if we are doing a UNDIRECTED graph question and we want ot put every UNIQUE edge in set - we have to override hashcode in edge class - this is how I did it last time: https://github.com/shanxS/randomCode/commit/3731da7273e7fdc4a64e8c46ba675e17b16f4e30
 9. min of 3: Math.min(a, Math.min(b, c)) 
 10. complete, perfect and full binary tree
 11. in array or seq. swapping N with 0, N-1 with 1, N-2 with 2 and so on. Essentially reverses the seq :)
@@ -91,4 +93,6 @@ you have missed updating after the loop
 
 27. const in java: https://stackoverflow.com/questions/3827393/java-switch-statement-constant-expression-required-but-it-is-constant
 
-28. size in java - note the relation b/n number of bits and power of 2
+28. size in java - note the relation b/n number of bits and power of 2. Additionaly check the power of 10 you have for them, like int less than 10^10 but more than 10^9
+
+29. dont compare flaot using ==, subtract them and test if value is less than some epsilon
