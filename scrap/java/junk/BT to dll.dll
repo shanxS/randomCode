@@ -1,0 +1,179 @@
+// BT to dll
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {1,2,3,4,5,6,
+        null,
+        null,null,8,9,7};
+
+        BTUtil btUtil = new BTUtil();
+        Node tree = btUtil.make(ar);
+        btUtil.print(tree);
+        System.out.println("==============");
+        btUtil.printInorder(tree);
+        System.out.println("==============");
+
+        B2DLL aa = new B2DLL();
+        Node cursor = aa.convert(tree);
+        while(cursor.getRight() != null)
+        {
+            System.out.print(cursor.getValue() + " ");
+            cursor = cursor.getRight();
+        }
+        System.out.println(cursor.getValue() + " ");
+
+        while (cursor != null)
+        {
+            System.out.print(cursor.getValue() + " ");
+            cursor = cursor.getLeft();
+        }
+
+    }
+}
+
+class B2DLL
+{
+    public Node convert(Node head)
+    {
+        convertFor(head, null);
+        Node cursor = head;
+        while(cursor.getLeft() != null)
+        {
+            cursor = cursor.getLeft();
+        }
+
+        return cursor;
+    }
+
+    private Node convertFor(Node node, Node parent)
+    {
+        if (node == null)
+        {
+            return null;
+        }
+
+        Node pre = convertFor(node.getLeft(), parent);
+        if (pre != null)
+        {
+            pre.setRight(node);
+            node.setLeft(pre);
+        }
+        else if (parent != null)
+        {
+            parent.setRight(node);
+            node.setLeft(parent);
+        }
+
+        Node right = convertFor(node.getRight(), node);
+        return (right == null) ? node : right;
+    }
+}
+
+class BTUtil
+{
+    public void printInorder(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        printInorder(node.getLeft());
+        System.out.print(node.getValue() + " ");
+        printInorder(node.getRight());
+    }
+
+    public void print(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        System.out.print(node.getValue() + " - ");
+        if (node.getLeft() != null)
+        {
+            System.out.print(node.getLeft().getValue());
+        }
+        System.out.print(", ");
+        if (node.getRight() != null)
+        {
+            System.out.print(node.getRight().getValue());
+        }
+        System.out.println();
+
+        print(node.getLeft());
+        print(node.getRight());
+    }
+
+    public Node make(Integer[] ar)
+    {
+        Node[] nodes = new Node[ar.length];
+        nodes[0] = new Node(ar[0]);
+
+        for (Integer i=1; i<ar.length; ++i)
+        {
+            if (ar[i] == null)
+            {
+                continue;
+            }
+
+            Node parentNode = nodes[getParentIndex(i)];
+            if (i%2 == 0)
+            {
+                parentNode.setRight(new Node(ar[i]));
+                nodes[i] = parentNode.getRight();
+            }
+            else
+            {
+                parentNode.setLeft(new Node(ar[i]));
+                nodes[i] = parentNode.getLeft();
+            }
+        }
+
+        return nodes[0];
+    }
+
+    private int getParentIndex(Integer index)
+    {
+        return (index-1)/2;
+    }
+}
+
+class Node
+{
+    private Node left, right;
+    final private Integer value;
+
+    public Node(Integer v)
+    {
+        value = v;
+    }
+
+    public Integer getValue()
+    {
+        return value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+}
