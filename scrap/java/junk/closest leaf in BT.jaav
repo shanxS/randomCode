@@ -1,0 +1,187 @@
+// closest leaf in BT
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {1,2,3,
+        null,null,
+                4,5,
+                null,null,null,null,
+                6,
+                null,null,
+                9,
+                null,null,null,null,null,null,null,null,
+                7,8,
+                null,null,null,null,
+                10
+        };
+
+        BTUtil btUtil = new BTUtil();
+        Node tree = btUtil.make(ar);
+        btUtil.print(tree);
+
+        NearestLeafFinder nlf = new NearestLeafFinder();
+//        System.out.print(nlf.find(tree, 3).getValue());
+//        System.out.print(nlf.find(tree, 4).getValue());
+        System.out.print(nlf.find(tree, 1).getValue());
+
+
+    }
+}
+
+class NearestLeafFinder
+{
+    private Integer minDepth, targetDepth;
+    private Node nearestLeaf, targetNode;
+
+    public Node find(Node head, Integer target)
+    {
+        findTargetNode(head, target, 0);
+
+        minDepth = Integer.MAX_VALUE;
+        nearestLeaf = null;
+        findNearestLeaf(targetNode, 0);
+        findNearestLeaf(head, targetDepth);
+
+        return nearestLeaf;
+    }
+
+    private void findNearestLeaf(Node node, Integer depth)
+    {
+        if (node == null || depth > minDepth)
+        {
+            return;
+        }
+
+        if (isLeaf(node))
+        {
+            if (depth < minDepth)
+            {
+                minDepth = depth;
+                nearestLeaf = node;
+            }
+        }
+
+        findNearestLeaf(node.getLeft(), depth+1);
+        findNearestLeaf(node.getRight(), depth+1);
+    }
+
+    private boolean isLeaf(Node node)
+    {
+        return node.getRight() == null && node.getLeft()== null;
+    }
+
+    private void findTargetNode(Node node, Integer target, Integer depth)
+    {
+        if (node == null || targetNode != null)
+        {
+            return;
+        }
+
+        if (node.getValue() == target)
+        {
+            targetNode = node;
+            targetDepth = depth;
+            return;
+        }
+
+        findTargetNode(node.getLeft(), target, depth+1);
+        findTargetNode(node.getRight(), target, depth+1);
+    }
+}
+
+class BTUtil
+{
+    public void print(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        System.out.print(node.getValue() + " - ");
+        if (node.getLeft() != null)
+        {
+            System.out.print(node.getLeft().getValue());
+        }
+        System.out.print(", ");
+        if (node.getRight() != null)
+        {
+            System.out.print(node.getRight().getValue());
+        }
+        System.out.println();
+
+        print(node.getLeft());
+        print(node.getRight());
+    }
+
+    public Node make(Integer[] ar)
+    {
+        Node[] nodes = new Node[ar.length];
+        nodes[0] = new Node(ar[0]);
+
+        for (Integer i=1; i<ar.length; ++i)
+        {
+            if(ar[i] == null)
+            {
+                continue;
+            }
+
+            Node parent = nodes[getParentIndex(i)];
+            if (i%2 == 0)
+            {
+                parent.setRight(new Node(ar[i]));
+                nodes[i] = parent.getRight();
+            }
+            else
+            {
+                parent.setLeft(new Node(ar[i]));
+                nodes[i] = parent.getLeft();
+            }
+        }
+
+        return nodes[0];
+    }
+
+    private int getParentIndex(Integer index)
+    {
+        return (index-1)/2;
+    }
+}
+
+class Node
+{
+    private Node left, right;
+    final private Integer value;
+
+    public Node(Integer v)
+    {
+        value = v;
+    }
+
+    public Integer getValue()
+    {
+        return value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+}
