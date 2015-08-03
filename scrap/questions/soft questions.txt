@@ -1,9 +1,29 @@
 1. Discussed on my current roles and responsibilities
+we are a small team so everyone has to do everything - from fixing bugs to writing features to writing system tests
+
 2. why do you want to join to Amazon?
+I would like to make a positive impact on millions of people - what better way to do it than working for most customer centric company in the world?
+
 3. What are your accomplishments in your role so far?
+apart form regular things - I proud of hackathon win, android app, KATS upgrade
+
+
 4. What are the things that you’re not good at and need to improve?
+Time management, I feel is a problem for me - I dont take time out of work - I dont have work life balance - all my waking hours are spent in front of a computer
+
 5. Challenging situation faced
+2 times - both instanes was race against time - 
+    - hackathon: everyone was runnig against time - I took up the task which I knew how to do but had very little exposure with tools (JS/browser) - since everyone was runnig against time - I had to do it anyway
+    - android app: was a side project - another race against time - java based android app was a flop becasue soap clients are not available for android - had to switch to Xamarin and do it in C# - we wanted to show it to our CEO - this app finally ended up in project roadmap
+
 4. Why should we hire you?
+AFAIK amazon is looking for people who are smart, self motivated and willing to go that extra mile to get the things done - I believe I belong to that category
+
 5. when did you feel that something could have been done in better way after delivering it in project
+Almost all the time :) when I do a feature and 2 or 3 weeks later I come back to same code - my understanding of the system and use cases has improved and I this makes me realize that probaly a better way was possible
+
 6. when did you perform best way, as in what did you come up with that other could not do
+I belive my strongest point is maintaing focus and consistency in face for adversity - particulary when things are time bound - thats where I excel - andriod app, KATS adaption
+
 7. when did you go out of the way i.e. against your managers, or higher authority and deliver the best according to you
+as far as product is concerned, that has never happend so far - if I feel my solution is beeter than what my seniors suggests - we debate - a lot - and then irrespective of the fact where idea orignated from the best idea is implemented
