@@ -1,0 +1,95 @@
+// young tablaue
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer mat[][]  =  { {10, 20, 30, 40},
+                              {15, 25, 35, 45},
+                              {27, 29, 37, 48},
+                              {32, 33, 39, 50},
+                            };
+
+        (new Printer()).print(mat);
+    }
+}
+
+class Printer
+{
+    final Integer INF = 99;
+    Integer[][] ar;
+
+    public void print(Integer[][] ar)
+    {
+        this.ar = ar;
+
+        while (ar[0][0] != INF)
+        {
+            System.out.print(ar[0][0] + " ");
+            ar[0][0] = INF;
+            youngify();
+
+//            for (Integer r=0; r<ar.length; ++r)
+//            {
+//                for (Integer c=0; c<ar[0].length; ++c)
+//                {
+//                    System.out.print(ar[r][c] + " ");
+//                }
+//                System.out.println();
+//            }
+
+            System.out.println("-----------------------");
+        }
+    }
+
+    private void youngify()
+    {
+        Integer c=0, r=0;
+
+        while (c<ar[0].length || r<ar.length)
+        {
+            if (c<ar[0].length-1 && r<ar.length-1)
+            {
+                if (ar[r+1][c] < ar[r][c+1]
+                        && ar[r+1][c] < ar[r][c])
+                {
+                    swap (r+1, c, r, c);
+                    r = r+1;
+                }
+                else if (ar[r+1][c] > ar[r][c+1]
+                        && ar[r][c+1] < ar[r][c])
+                {
+                    swap(r, c+1, r,c);
+                    c = c+1;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else if (c < ar[0].length-1
+                    && ar[r][c+1] < ar[r][c])
+            {
+                swap(r, c+1, r,c);
+                c = c+1;
+            }
+            else if (r < ar.length-1
+                    && ar[r+1][c] < ar[r][c])
+            {
+                swap (r+1, c, r, c);
+                r = r+1;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    private void swap(int fromR, Integer fromC, Integer toR, Integer toC)
+    {
+        Integer tmp = ar[fromR][fromC];
+        ar[fromR][fromC] = ar[toR][toC];
+        ar[toR][toC] = tmp;
+    }
+}
