@@ -1,0 +1,90 @@
+// max sum matrix
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[][] ar = {{1, 2, -1, -4, -20},
+                {-8, -3, 4, 2, 1},
+                {3, 8, 10, 1, 3},
+                {-4, -1, 1, 7, -6}
+        };
+
+        MatrixSum ms = new MatrixSum();
+        ms.find(ar);
+        System.out.print(ms.max + " " + ms.maxCStart + " " + ms.maxCEnd + " " + ms.maxRStart + " " + ms.maxREnd);
+
+    }
+}
+
+class MatrixSum
+{
+    public Integer max, maxCStart, maxCEnd, maxRStart, maxREnd;
+
+    public void find(Integer[][] ar)
+    {
+        Kadane kadane = new Kadane();
+        max = Integer.MIN_VALUE;
+        for (int cStart=0; cStart<ar[0].length; ++cStart)
+        {
+            int[] rowSum = new int[ar.length];
+            for (int cEnd=cStart; cEnd<ar[0].length; ++cEnd)
+            {
+                for (int r=0; r<ar.length; ++r)
+                {
+                    rowSum[r] += ar[r][cEnd];
+                }
+
+                kadane.find(rowSum);
+                if(kadane.max > max)
+                {
+                    max = kadane.max;
+                    maxCEnd = cEnd;
+                    maxCStart = cStart;
+                    maxRStart = kadane.maxStart;
+                    maxREnd = kadane.maxEnd;
+                }
+            }
+        }
+    }
+}
+
+class Kadane
+{
+    public Integer max, maxStart, maxEnd;
+
+    public void find(int[] ar)
+    {
+        Integer currentMax = ar[0];
+        Integer start = 0;
+        Integer end = 0;
+        maxStart = start;
+        maxEnd = end;
+        max = currentMax;
+
+        for (Integer i=1; i<ar.length; ++i)
+        {
+            if (currentMax < 0 && ar[i] > 0)
+            {
+                currentMax = ar[i];
+                start = i;
+                end = i;
+            }
+            else
+            {
+                currentMax += ar[i];
+                ++end;
+            }
+
+            if (max < currentMax)
+            {
+                max = currentMax;
+                maxStart = start;
+                maxEnd = end;
+            }
+        }
+
+//        System.out.print(max);
+    }
+
+}
