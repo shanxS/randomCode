@@ -1,0 +1,53 @@
+// lis
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        int[] ar = {10, 22, 9, 33, 21, 50, 41, 60, 80 };
+        (new LIS()).lis(ar);
+    }
+}
+
+class LIS
+{
+    private int[] ar;
+    private Integer[] dp;
+    private Integer globalMax;
+    public void lis(int[] ar)
+    {
+        this.ar = ar;
+        dp = new Integer[ar.length];
+        globalMax = Integer.MIN_VALUE;
+
+        findFor(ar.length-1);
+        System.out.print(globalMax);
+    }
+
+    private Integer findFor(int thisIndex)
+    {
+        if (thisIndex == 0)
+        {
+            return 1;
+        }
+
+        if (dp[thisIndex] != null)
+        {
+            return dp[thisIndex];
+        }
+
+        Integer thisMax = 1;
+        for(Integer i=0; i<thisIndex; ++i)
+        {
+            int max = findFor(i);
+            if (ar[i] < ar[thisIndex] && (max + 1) > thisMax)
+            {
+                thisMax = max+1;
+            }
+        }
+
+        globalMax = Math.max(thisMax, globalMax);
+
+        return thisMax;
+    }
+}
