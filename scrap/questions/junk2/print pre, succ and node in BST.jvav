@@ -1,0 +1,164 @@
+// print pre, succ and node in BST
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {20, 8, 22, 4, 12, 10, 14};
+        BST bst = new BST();
+        for (Integer i : ar)
+        {
+            bst.insert(i);
+        }
+
+        (new Printer()).print(bst.getHead(), 14);
+    }
+}
+
+class Printer
+{
+    private Integer k;
+    public void print(Node head, int k)
+    {
+        this.k = k;
+        findFor(head, null);
+    }
+
+    private Node findFor(Node node, Node pre)
+    {
+        if (node == null)
+        {
+            return null;
+        }
+
+        Node left = findFor(node.getLeft(), pre);
+        if (left != null && left.getValue() == k)
+        {
+            System.out.println("succ " + node.getValue());
+        }
+        if (node.getValue() == k)
+        {
+            if (pre  != null)
+            {
+                System.out.print("pre " + pre.getValue());
+            }
+            System.out.println("node " + node.getValue());
+        }
+
+        Node right = findFor(node.getRight(), node);
+
+        return (right == null) ? node : right;
+    }
+}
+
+class BST
+{
+    private Node head;
+
+    public BST()
+    {
+        head = null;
+    }
+
+    public void insert(Integer v)
+    {
+        if (head == null)
+        {
+            head = new Node(v);
+        }
+        else
+        {
+            insert(head, v);
+        }
+    }
+
+    public void print(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        System.out.print(node.getValue() + " - ");
+        if (node.getLeft() != null)
+        {
+            System.out.print(node.getLeft().getValue());
+        }
+        System.out.print(", ");
+        if (node.getRight() != null)
+        {
+            System.out.print(node.getRight().getValue());
+        }
+        System.out.println();
+
+        print(node.getLeft());
+        print(node.getRight());
+    }
+
+    private void insert(Node node, Integer v)
+    {
+        if (node.getValue() > v)
+        {
+            if(node.getLeft() != null)
+            {
+                insert(node.getLeft(), v);
+            }
+            else
+            {
+                node.setLeft(new Node(v));
+            }
+        }
+        else if (node.getValue() < v)
+        {
+            if (node.getRight() != null)
+            {
+                insert(node.getRight(), v);
+            }
+            else
+            {
+                node.setRight(new Node(v));
+            }
+        }
+    }
+
+    public Node getHead()
+    {
+        return head;
+    }
+}
+
+class Node
+{
+    private Node left, right;
+    final private int value;
+
+    public Node(Integer i)
+    {
+        value = i;
+    }
+
+    public int getValue()
+    {
+        return value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+}
