@@ -98,3 +98,5 @@ you have missed updating after the loop
 29. dont compare flaot using ==, subtract them and test if value is less than some epsilon
 
 30. rolling karp https://github.com/shanxS/randomCode/commit/e356996ec948bc1645567a9435ef523d398d69b1
+
+31. revise the logic of http://www.geeksforgeeks.org/find-smallest-value-represented-sum-subset-given-array/
