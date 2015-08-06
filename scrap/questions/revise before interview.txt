@@ -96,3 +96,5 @@ you have missed updating after the loop
 28. size in java - note the relation b/n number of bits and power of 2. Additionaly check the power of 10 you have for them, like int less than 10^10 but more than 10^9
 
 29. dont compare flaot using ==, subtract them and test if value is less than some epsilon
+
+30. rolling karp https://github.com/shanxS/randomCode/commit/e356996ec948bc1645567a9435ef523d398d69b1
