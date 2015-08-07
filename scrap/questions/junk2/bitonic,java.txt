@@ -1,0 +1,49 @@
+// bitonic
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        int[] ar = {1, 11, 2, 10, 4, 5, 2, 1};
+        (new Bitonic()).sum(ar);
+    }
+}
+
+class Bitonic
+{
+    private int[] incFwd, incBk, ar;
+    public void sum(int[] ar)
+    {
+        incBk = new int[ar.length];
+        incFwd = new int[ar.length];
+        this.ar = ar;
+
+        incFwd[0] = 1;
+        incBk[0] = 1;
+        for (int i=1; i<incFwd.length; ++i)
+        {
+            int j=i-1;
+            while (j>=0 )
+            {
+                if (ar[j]<ar[i] && incFwd[j]+1 > incFwd[i])
+                {
+                    incFwd[i] = incFwd[j] + 1;
+                }
+                if (ar[j]>ar[i] && incBk[j]+1 > incBk[i])
+                {
+                    incBk[i] = incBk[j] + 1;
+                }
+                --j;
+            }
+        }
+
+        
+        int max = Integer.MIN_VALUE;
+        for (int i=0; i<ar.length; ++i)
+        {
+            max = Math.max(max, incBk[i] + incFwd[i]);
+        }
+
+        System.out.print((max-1));
+    }
+}
