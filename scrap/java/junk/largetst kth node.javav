@@ -1,0 +1,176 @@
+// largetst kth node
+
+public class Main
+{
+    public static void main(String[]er)
+    {
+        Integer[] ar = {7, 10, 4, 3, 20, 15};
+        ModifiedBST mb = new ModifiedBST(3);
+        for (Integer i=0; i<ar.length; ++i)
+        {
+            mb.insert(ar[i]);
+            if (i >= 2)
+            {
+                System.out.print(mb.getMinNode().getValue() + " ");
+            }
+        }
+    }
+}
+
+class ModifiedBST
+{
+    private Node head, minNodeParent;
+    private final int k;
+    private int nodeCount;
+    public ModifiedBST(int k)
+    {
+        this.k = k;
+        nodeCount = 0;
+        head = null;
+    }
+
+    public void insert(int v)
+    {
+        if (head == null)
+        {
+            head = new Node(v);
+            ++nodeCount;
+        }
+        else
+        {
+            if (nodeCount == k)
+            {
+                if (v > getMinNode().getValue())
+                {
+                    replaceMin(v);
+                }
+            }
+            else
+            {
+                insert(head, v);
+                ++nodeCount;
+            }
+        }
+    }
+
+    private void replaceMin(int v)
+    {
+        removeMin();
+        insert(head, v);
+        updateMinParent();
+    }
+
+    private void insert(Node node, int v)
+    {
+        if (node.getValue() > v)
+        {
+            if (node.getLeft() != null)
+            {
+                insert(node.getLeft(), v);
+            }
+            else
+            {
+                node.setLeft(new Node(v));
+            }
+        }
+        else if (node.getValue() < v)
+        {
+            if (node.getRight() != null)
+            {
+                insert(node.getRight(), v);
+            }
+            else
+            {
+                node.setRight(new Node(v));
+            }
+        }
+    }
+
+    private void updateMinParent()
+    {
+        Node cursor = head;
+        while (cursor.getLeft() != null && cursor.getLeft().getLeft() != null)
+        {
+            cursor = cursor.getLeft();
+        }
+
+        if (cursor == head )
+        {
+            if (head.getLeft() == null)
+            {
+                minNodeParent = null;
+            }
+            else
+            {
+                minNodeParent = head;
+            }
+        }
+        else
+        {
+            minNodeParent = cursor;
+        }
+    }
+
+    private void removeMin()
+    {
+        if (minNodeParent == null)
+        {
+            head = head.getRight();
+        }
+        else
+        {
+            minNodeParent.setLeft(minNodeParent.getLeft().getRight());
+        }
+    }
+
+    public Node getMinNode()
+    {
+        if (head == null)
+        {
+            return null;
+        }
+
+        if (minNodeParent == null)
+        {
+            return head;
+        }
+
+        return minNodeParent.getLeft();
+    }
+}
+
+class Node
+{
+    private Node left, right;
+    final private Integer value;
+
+    public Node(Integer value)
+    {
+        this.value = value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+
+    public Integer getValue()
+    {
+        return value;
+    }
+}
