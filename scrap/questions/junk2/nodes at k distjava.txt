@@ -1,0 +1,181 @@
+nodes at k dist
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {20,8,22,4,12,null,null,null,null,10,14};
+        BTUtil util = new BTUtil();
+        Node head = util.makeFor(ar);
+//        util.print(head);
+        (new DistancePrinter()).print(head, 8, 2);
+    }
+}
+
+class DistancePrinter
+{
+    private Node targetNode;
+    private int targetDepth, dist, targetValue;
+    private boolean foundOnLeft;
+    public void print(Node head, int target, int dist)
+    {
+        this.dist = dist;
+        targetValue = target;
+
+        if (target == head.getValue())
+        {
+            findNodesInTree(head, dist);
+        }
+        else
+        {
+            findTarget(head.getLeft(), 1, true);
+            findTarget(head.getRight(), 1, false);
+
+            findNodesInTree(targetNode, dist);
+            if (foundOnLeft)
+            {
+                findNodesInTree(head.getRight(), dist - targetDepth - 1);
+            } else
+            {
+                findNodesInTree(head.getLeft(), dist - targetDepth - 1);
+            }
+        }
+    }
+
+    private void findNodesInTree(Node node, int thisDepth)
+    {
+        if (thisDepth < 0 || node == null)
+        {
+            return;
+        }
+
+        if (thisDepth == 0)
+        {
+            System.out.print(node.getValue() + " ");
+            return;
+        }
+
+        findNodesInTree(node.getLeft(), thisDepth-1);
+        findNodesInTree(node.getRight(), thisDepth-1);
+    }
+
+    private void findTarget(Node node, int depth, boolean inLeft)
+    {
+        if (targetNode != null || node == null)
+        {
+            return;
+        }
+
+        if (node.getValue() == targetValue)
+        {
+            targetNode = node;
+            targetDepth = depth;
+            foundOnLeft = inLeft;
+
+            return;
+        }
+
+        findTarget(node.getLeft(), depth+1, inLeft);
+        findTarget(node.getRight(), depth+1, inLeft);
+    }
+}
+
+class BTUtil
+{
+
+    public Node makeFor(Integer[] ar)
+    {
+        Node[] nodes = new Node[ar.length];
+        nodes[0] = new Node(ar[0]);
+
+        for (Integer i=1; i<ar.length; ++i)
+        {
+            if (ar[i] == null)
+            {continue;}
+
+            Node parent = nodes[getParentIndex(i)];
+            if (i%2 == 0)
+            {
+                parent.setRight(new Node(ar[i]));
+                nodes[i] = parent.getRight();
+            }
+            else
+            {
+                parent.setLeft(new Node(ar[i]));
+                nodes[i] = parent.getLeft();
+            }
+        }
+
+        return nodes[0];
+    }
+
+    private int getParentIndex(Integer i)
+    {
+        return (i-1)/2;
+    }
+
+    public void print(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        System.out.print(node.getValue() + " - ");
+        if (node.getLeft() != null)
+        {
+            System.out.print(node.getLeft().getValue());
+        }
+        System.out.print(", ");
+        if (node.getRight() != null)
+        {
+            System.out.print(node.getRight().getValue());
+        }
+        System.out.println();
+
+        print(node.getLeft());
+        print(node.getRight());
+    }
+}
+
+
+class Node
+{
+    private Node left, right;
+    private Integer value;
+
+    public Node(Integer v)
+    {
+        value = v;
+    }
+
+    public Integer getValue()
+    {
+        return value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+
+    public void setValue(Integer value)
+    {
+        this.value = value;
+    }
+}
