@@ -1,0 +1,39 @@
+// kadane
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        int[] ar = {-2, -3, 4, -1, -2, 1, 5, -3};
+        int currentMax = ar[0];
+        int start = 0;
+        int end = 0;
+        int max = currentMax;
+        int maxStart = start;
+        int maxEnd = end;
+
+        for (int i=1; i<ar.length; ++i)
+        {
+            if (currentMax < 0 && ar[i] > 0)
+            {
+                currentMax = ar[i];
+                start = i;
+                end = i;
+            }
+            else
+            {
+                currentMax += ar[i];
+                end = i;
+
+                if (max < currentMax)
+                {
+                    max = currentMax;
+                    maxStart = start;
+                    maxEnd = end;
+                }
+            }
+        }
+
+        System.out.print(max + " " + maxStart + " " + maxEnd);
+    }
+}
