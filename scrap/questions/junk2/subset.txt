@@ -1,0 +1,48 @@
+subset
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        int[] ar = {3, 34, 4, 12, 5, 2};
+        List<Integer> list = new ArrayList<>();
+        for (int i : ar)
+        {
+            list.add(i);
+        }
+        int k = 30;
+        (new SubSet()).has(list, k);
+    }
+}
+
+class SubSet
+{
+    public void has(List<Integer> list, int k)
+    {
+
+        List<Integer> bag = new ArrayList<>(list);
+        bag.remove(0);
+        boolean result = findFor(k-list.get(0), bag) || findFor(k, bag);
+
+        System.out.print(result);
+    }
+
+    private boolean findFor(int k, List<Integer> list)
+    {
+        if (k ==0)
+        {
+            return true;
+        }
+        if (list.size() == 0 && k != 0)
+        {
+            return false;
+        }
+
+        List<Integer> bag = new ArrayList<>(list);
+        bag.remove(0);
+        return findFor(k-list.get(0), bag) || findFor(k, bag);
+    }
+}
