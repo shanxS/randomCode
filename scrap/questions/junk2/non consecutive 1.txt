@@ -1,0 +1,48 @@
+non consecutive 1
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        (new BinaryCounter()).count(6);
+    }
+}
+
+class BinaryCounter
+{
+    public void count(int k)
+    {
+        List<Integer> list = new ArrayList<>();
+        for (int i=0; i<k; ++i)
+        {
+            list.add(0);
+        }
+
+        System.out.print(1+countFor(list));
+    }
+
+    private int countFor(List<Integer> list)
+    {
+        int counter = 0;
+        for (int i=0; i<list.size(); ++i)
+        {
+            if (list.get(i) == 1)
+            {
+                break;
+            }
+
+            if ((i<list.size()-1 && list.get(i+1) == 0)
+                    || (i == list.size()-1 && list.get(i) == 0))
+            {
+                List<Integer> bag = new ArrayList<>(list);
+                bag.set(i,1);
+                counter += 1 + countFor(bag);
+            }
+        }
+
+        return counter;
+    }
+}
