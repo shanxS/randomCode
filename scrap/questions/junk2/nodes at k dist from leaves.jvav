@@ -1,0 +1,283 @@
+nodes at k dist from leaves
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        Integer[] ar = {1,2,3,4,5,6,7,
+        null,null,null,null,null, 8};
+        BTUtil util = new BTUtil();
+        Node head = util.makeFor(ar);
+//        util.print(head);
+        AdjMatix adj = new AdjMatix(head);
+        adj.printAdj();
+        adj.printMap();
+        (new NodeDistance()).print(adj, 2);
+    }
+}
+
+class NodeDistance
+{
+    private Integer d;
+    private Map<Integer, Integer> indexValue;
+    private int[][] adj;
+
+    public void print(AdjMatix adjMatix, int d)
+    {
+        this.d  = d;
+
+        indexValue = adjMatix.getIndexValue();
+        adj = adjMatix.getAdj();
+
+        for (int r=0; r<adj.length; ++r)
+        {
+            if(isLeaf(adj[r]))
+            {
+                System.out.print("for " + indexValue.get(r) + ": ");
+                tarverse(r, d, r);
+                System.out.println();
+            }
+        }
+    }
+
+    private void tarverse(int parentIndex, int thisD, int forLeafIndex)
+    {
+        if (parentIndex > adj.length || thisD < 0)
+        {return;}
+
+        if (thisD == 0)
+        {
+            System.out.print(indexValue.get(parentIndex) + " ");
+            return;
+        }
+
+        for (int c=0; c<adj.length; ++c)
+        {
+            if (adj[parentIndex][c] == 1 && forLeafIndex != c)
+            {
+                tarverse(c, thisD-1, forLeafIndex);
+            }
+        }
+    }
+
+    private boolean isLeaf(int[] children)
+    {
+        int sum = 0;
+        for (int i : children)
+        {
+            sum += i;
+            if (sum > 1)
+            {
+                return false;
+            }
+        }
+
+        return sum == 1;
+    }
+
+    private Integer printFor(Node node)
+    {
+//        if (node == null)
+//        {
+//            return null;
+//        }
+//        if (isLead(node))
+//        {
+//            return 0;
+//        }
+//
+//        Integer leftDepth = printFor(node.getLeft());
+//        if (leftDepth != null)
+//        {}
+//
+        Integer rightDepth = printFor(node.getRight());
+
+        return 0;
+    }
+}
+
+class AdjMatix
+{
+    private Map<Integer, Integer> indexValue, valueIndex;
+    final private Node head;
+    private int[][] adj;
+
+    public AdjMatix(Node head)
+    {
+        this.head = head;
+        indexValue = new HashMap<>();
+        valueIndex = new HashMap<>();
+
+        nodeIndex = 0;
+        popualteMaps(head);
+
+        adj = new int[indexValue.size()+1][indexValue.size()+1];
+        populateAdj(head, null);
+    }
+
+    public int[][] getAdj()
+    {
+        return adj;
+    }
+
+    public Map<Integer, Integer> getIndexValue()
+    {
+        return indexValue;
+    }
+
+    public void printMap()
+    {
+        for (Map.Entry<Integer, Integer> entry : valueIndex.entrySet())
+        {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+    }
+
+    public void printAdj()
+    {
+        for (int r=0; r<adj.length; ++r)
+        {
+            for (int c=0; c<adj.length; ++c)
+            {
+                System.out.print(adj[r][c] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private void populateAdj(Node node, Node parent)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        if (parent != null)
+        {
+            adj[valueIndex.get(node.getValue())][valueIndex.get(parent.getValue())] = 1;
+            adj[valueIndex.get(parent.getValue())][valueIndex.get(node.getValue())] = 1;
+        }
+
+        populateAdj(node.getLeft(), node);
+        populateAdj(node.getRight(), node);
+    }
+
+    private int nodeIndex;
+    private void popualteMaps(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        ++nodeIndex;
+        indexValue.put(nodeIndex, node.getValue());
+        valueIndex.put(node.getValue(), nodeIndex);
+
+        popualteMaps(node.getRight());
+        popualteMaps(node.getLeft());
+    }
+}
+
+class BTUtil
+{
+
+    public Node makeFor(Integer[] ar)
+    {
+        Node[] nodes = new Node[ar.length];
+        nodes[0] = new Node(ar[0]);
+
+        for (Integer i=1; i<ar.length; ++i)
+        {
+            if (ar[i] == null)
+            {continue;}
+
+            Node parent = nodes[getParentIndex(i)];
+            if (i%2 == 0)
+            {
+                parent.setRight(new Node(ar[i]));
+                nodes[i] = parent.getRight();
+            }
+            else
+            {
+                parent.setLeft(new Node(ar[i]));
+                nodes[i] = parent.getLeft();
+            }
+        }
+
+        return nodes[0];
+    }
+
+    private int getParentIndex(Integer i)
+    {
+        return (i-1)/2;
+    }
+
+    public void print(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        System.out.print(node.getValue() + " - ");
+        if (node.getLeft() != null)
+        {
+            System.out.print(node.getLeft().getValue());
+        }
+        System.out.print(", ");
+        if (node.getRight() != null)
+        {
+            System.out.print(node.getRight().getValue());
+        }
+        System.out.println();
+
+        print(node.getLeft());
+        print(node.getRight());
+    }
+}
+
+
+class Node
+{
+    private Node left, right;
+    private Integer value;
+
+    public Node(Integer v)
+    {
+        value = v;
+    }
+
+    public Integer getValue()
+    {
+        return value;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+
+    public void setValue(Integer value)
+    {
+        this.value = value;
+    }
+}
