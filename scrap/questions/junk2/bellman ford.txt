@@ -1,0 +1,87 @@
+bellman ford
+
+public class Main
+{
+    public static void main(String[] er)
+    {
+        int[][] adj = {
+                {0,-1,4,0,0},
+                {0,0,3,2,2},
+                {0,0,0,0,0},
+                {0,1,5,0,0},
+                {0,0,0,-3,0}
+        };
+
+        (new BellmanFord()).find(adj);
+    }
+}
+
+class BellmanFord
+{
+    private int[][] cost;
+    final private int INF = Integer.MAX_VALUE;
+
+    public void find(int[][] adj)
+    {
+        cost = adj;
+
+        for (int r=0; r<adj.length; ++r)
+        {
+            for (int c=0; c<adj.length; ++c)
+            {
+                if (cost[r][c] == 0 || r==c)
+                {
+                    cost[r][c] = INF;
+                }
+            }
+        }
+
+        cost[0][0] = 0;
+        compute(0);
+
+        for (int r=0; r<adj.length; ++r)
+        {
+            for (int c=0; c<adj.length; ++c)
+            {
+                if (cost[r][c] == INF)
+                {
+                    System.out.print("I ");
+                }
+                else
+                {
+                    System.out.print(cost[r][c] + " ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
+
+    private void compute(int parent)
+    {
+        if (parent >= cost.length)
+        {
+            return;
+        }
+
+        for (int child = 0; child<cost.length; ++child)
+        {
+            if (cost[parent][child] != INF)
+            {
+                if (cost[child][child] == INF)
+                {
+                    cost[child][child] = 0;
+                    compute(child);
+                }
+
+                for (int childChild = 0; childChild<cost.length; ++childChild)
+                {
+                    if (cost[child][childChild] != INF && (cost[child][childChild] + cost[parent][child] < cost[parent][childChild]))
+                    {
+                        cost[parent][childChild] = cost[child][childChild] + cost[parent][child];
+                    }
+                }
+            }
+        }
+    }
+}
