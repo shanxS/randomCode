@@ -89,6 +89,30 @@ you have missed updating after the loop
         }
     }
     
+    And Compatator as:
+    class Comp implements Comparator<Integer>
+    {
+        @Override
+        public int compare(Integer o1, Integer o2)
+        {
+            Integer n1 = (Integer) o1;
+            Integer n2 = (Integer) o2;
+
+            if (n1 > n2)
+            {
+                return 1;
+            }
+            else if (n2 > n1)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+    
 26. check out types of numbers: http://www.google.co.in/imgres?imgurl=http://scimathmn.org/stemtc/sites/default/files/images/frameworks/math/8.1.1A/image131.jpg&imgrefurl=http://scimathmn.org/stemtc/frameworks/811a-rational-irrational-real-numbers&h=386&w=866&tbnid=2E3Xm11PasI5WM:&tbnh=81&tbnw=184&usg=__NtYGzP_XApvwbNbVMhW3GvsH000=&docid=S24H-C_xfjYcUM&itg=1
 
 27. const in java: https://stackoverflow.com/questions/3827393/java-switch-statement-constant-expression-required-but-it-is-constant
