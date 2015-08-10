@@ -2,14 +2,22 @@
 we are a small team so everyone has to do everything - from fixing bugs to writing features to writing system tests
 
 2. why do you want to join to Amazon?
-I would like to make a positive impact on millions of people - what better way to do it than working for most customer centric company in the world?
+I want to make a positive impact on lives of millions of people - what better way to do it than working for most customer centric company in the world? And at the same time I'll stay field of tech - thing which I want ot do
+
+why do you want ot leave old company
+its not fast paced enough - there is not enough urgency to get things done - i have heard that in Amazon there is lot of work which needs to be done asap - plus the impact which I can make to the world by working in Amazon is more than most of the companies oit htere
+
+why do you want to not want work fir the startup you were
 
 3. What are your accomplishments in your role so far?
-apart form regular things - I proud of hackathon win, android app, KATS upgrade
+apart form regular things - 
+    I proud of hackathon win - it was race against time and given the team size and experince with code we were certainly not best palced, 
+    android app which is now part of product road map, 
+    KATS upgrade
 
 
 4. What are the things that you’re not good at and need to improve?
-Time management, I feel is a problem for me - I dont take time out of work - I dont have work life balance - all my waking hours are spent in front of a computer
+Time management, all my waking hours are spent in front of a computer - although I wont call it unbalanced work life - I dont draw sharp disticntion between work and play but I think I should explore a litlle more outside my computer
 
 5. Challenging situation faced
 2 times - both instanes was race against time - 
@@ -17,13 +25,43 @@ Time management, I feel is a problem for me - I dont take time out of work - I d
     - android app: was a side project - another race against time - java based android app was a flop becasue soap clients are not available for android - had to switch to Xamarin and do it in C# - we wanted to show it to our CEO - this app finally ended up in project roadmap
 
 4. Why should we hire you?
+what my resume doesnt tell  rigorous with work ethic - waht needs to be done has to be done - give strength - mix and match - no overconfidence or arrogance
 AFAIK amazon is looking for people who are smart, self motivated and willing to go that extra mile to get the things done - I believe I belong to that category
 
 5. when did you feel that something could have been done in better way after delivering it in project
-Almost all the time :) when I do a feature and 2 or 3 weeks later I come back to same code - my understanding of the system and use cases has improved and I this makes me realize that probaly a better way was possible
+When it comes to just implemnting something we have generally have long discussions follwed by code rewied by ppl who have been wroking on code for almost a decade - but the thing which I sometime miss is writing a testcase -when I do a feature and some time later when i am patting my back I realise that I missed one of the test cases - go back and write it as soon as possible
 
 6. when did you perform best way, as in what did you come up with that other could not do
-I belive my strongest point is maintaing focus and consistency in face for adversity - particulary when things are time bound - thats where I excel - andriod app, KATS adaption
+andriod app, KATS adaption - the strongest quality which showed up was maintaing focus and consistency in face for adversity - particulary when things are time bound - thats where I excel
+android app - we have been disucssing for quite sometime and then 2 weeks before ceo's visit we decidec we want to show this to him
+kats upgrade - there was team of 4 ppl working it, I was the only one who set up proper env. tehn my manager had to fly to hyderaabd to show it - the night before demo - I stayed up all night ot setup a dedicated demo server and make sure that everything runs soomthly during the demo - thouh I was the most inexperienced person with that product in the team
 
 7. when did you go out of the way i.e. against your managers, or higher authority and deliver the best according to you
 as far as product is concerned, that has never happend so far - if I feel my solution is beeter than what my seniors suggests - we debate - a lot - and then irrespective of the fact where idea orignated from the best idea is implemented
+
+8. He asked about most challenging faced so far. (At some point of time
+I realized I was telling conflict but soon concentrated to tell a
+challenge. Please prepare behavioral questions beforehand and be
+specific. Nobody is sitting there to listen a story)
+
+
+9. Tell me about your entire work experience briefing each project
+starting from latest. He stopped at some points and asked tech
+questions.
+
+10. What is the most conflicting situation faced and how you handles it?
+as far as writing code is considered - all conflicts, differnces is opinion are resolved by discussions
+and when it comes ot interpersonal conflit - I am lucky that people whom I work with are cool - when I say something is offendig=ng me - it is not repeated and at the smae time if someone lets me know that I am offending that person - I dont repeat the same thing
+
+
+11. What is the most innovative input you provided where you were appreciated by your manager?
+    android app
+
+
+12. About project experience and how i handled it. Amazon leadership
+skills were mostly expected.
+    - android app began form a lunch table discussion to make product mobilel based - we foidn a good starting point ot present as POC to product management
+    - it was a long weekend and then another weekend, since others were busy - I took the responsibilyt and my manager agreed to help me with api calls  - so I used to churn out the code and whenever I needed help with mdm api - I'd ping him and he would promptly resping
+    - choosing C#/Xamarin over java simplified a lot of things
+    - so I got  this thing form my manager - he use to say that you must know exactly why you are writng/editing a line of code - if you dont know then dont write - helps in maintaining high level of standards
+    
