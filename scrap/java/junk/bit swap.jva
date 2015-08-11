@@ -1,0 +1,75 @@
+bit swap
+
+public class Main
+{
+    final private static int intSize = 32;
+    public static void main(String[] er)
+    {
+        int num = 1;
+        printBits(num);
+
+        int outHybrid = reverseBitsHybrindApproach(num);
+        System.out.print("hybrid: " + outHybrid);
+        printBits(outHybrid);
+
+        int outBitShift = reverseBitsBitShiftApproach(num);
+        System.out.print("bit shift: " + outBitShift);
+        printBits(outBitShift);
+    }
+
+    private static int reverseBitsBitShiftApproach(int in)
+    {
+        int result = 0;
+        int filter = 1;
+
+        int cursor = 0;
+        int intSize = 32;
+        while (cursor < intSize)
+        {
+            int bit = (in & filter) == 0 ? 0 : 1;
+
+            result |= (bit << (intSize -cursor-1));
+
+            filter <<= 1;
+
+            ++cursor;
+        }
+
+        return result;
+    }
+
+    private static int reverseBitsHybrindApproach(int in)
+    {
+        int out = 0;
+        int filter = 1;
+        int count = 0;
+
+        System.out.println();
+        while (count < intSize)
+        {
+            int bit = (in & filter) == 0 ? 0 : 1  ;
+            out += bit * (int)Math.pow(2, intSize-count-1);
+            filter <<= 1;
+
+            ++count;
+        }
+
+        return out;
+    }
+
+    private static void printBits(int num)
+    {
+        int filter = 1;
+        int count = 0;
+
+        System.out.println();
+        while (count < intSize)
+        {
+            System.out.print(((num & filter) == 0? 0 : 1  )+ " ");
+            filter <<= 1;
+
+            ++count;
+        }
+    }
+}
+
