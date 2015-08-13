@@ -1,0 +1,44 @@
+// if it is given that array is sorted array is rotated then
+// if first > last - ascesding order
+// else descending order
+
+// to find inflxion point:
+// asec rotated array -> smallest number is the one who's preceding number is more htan it - use the properties to find this in log n time
+// desc rotated array -> vice versa of asec
+
+// once you know the inflexion point and rotation type - use binary search across infexion point
+
+class RotatedFinder
+{
+    private Integer[] array;
+
+    final private Boolean ASEC;
+    final private Boolean DESC;
+    final private Boolean type;
+    final private Integer inflexionIndex;
+
+    public RotatedFinder(Integer[] array)
+    {
+        this.array = array;
+
+        ASEC = true;
+        DESC = false;
+        type = !(array[0] < array[array.length-1]);
+        inflexionIndex = findInflexionIndex();
+    }
+
+    private Integer findInflexionIndex()
+    {
+        Integer startIndex = 0;
+        Integer endIndex = array.length;
+
+        while (startIndex <= endIndex)
+        {
+            Integer midIndex = startIndex + (endIndex-startIndex)/2;
+
+            if ()
+        }
+    }
+
+
+}

@@ -1,0 +1,33 @@
+Turning up the game
+
+- geeks for geeks
+- SO 
+- top coder tutorials - https://www.topcoder.com/community/data-science/data-science-tutorials/
+  top coder search - https://community.topcoder.com/tc?module=ProblemArchive
+
+-------------------------
+
+- elements of programming interview
+- cracking the coding interview
+
+-------------------------
+
+- algorithm design - skeina
+- intutive approach to algo
+- DW toolkit
+
+-------------------------
+
+- code on paper - test on computer
+
+-------------------------
+
+- make your project descriptions
+
+==============================================
+
+Iron out the wrinkles:
+--- 1. big o and other complexities
+2. learn to write on paper
+3. project description
+4. geometry

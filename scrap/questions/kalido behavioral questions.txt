@@ -1,0 +1,80 @@
+======================================================================================
+
+Android App
+
+    A. Soap and Rest
+
+        1. Simple Object Access Protocol (SOAP) and REpresentational State Transfer (REST) 
+        2. SOAP relies exclusively on XML to provide messaging services - REST relies on a simple URL in many cases
+        3. SOAP : Web Services Description Language (WSDL) - another file that’s associated with SOAP - provides a definition of how the Web service works, so that when you create a reference to it, the IDE can completely automate the process
+        REST: You can find REST-based Web services that output the data in Command Separated Value (CSV), JavaScript Object Notation (JSON)
+        4. SOAP features is built-in error handling -  If there’s a problem with your request, the response contains error information that you can use to fix the problem. Given that you might not own the Web service, this particular feature is extremely important; otherwise you would be left guessing as to why things didn’t work. The error reporting even provides standardized codes so that it’s possible to automate some error handling tasks in your code.
+        5. SOAP can give you ACID transaction - REST cant
+        6. Rest doesn’t have a standard messaging system and expects clients to deal with communication failures by retrying. SOAP has successful/retry logic built in and provides end-to-end reliability even through SOAP intermediaries.
+        7. SOAP might look good with so many features but the down side is - SOAP is brittle, mostly becuse its strongly typed - strong typing is a bad choice for loosely coupled distributed systems. More: http://www.somebits.com/weblog/tech/bad/whySoapSucks.html?seemore=y
+        
+    B. What problem does it solve
+        1. it brings the user's MDM Inbox to mobile device.
+        2. inbox has list of subjects which are assigned to this user for some action like accept/reject/modify etc
+        3. these actions are part of workflow in MDM
+        4. workflow is a state diagram which can optionally be used as a hiearchial system to integrate incoming data into golden data
+        
+    C. DB arch
+        1. no specific db arch for this app - we use what is already implemented for MDM
+        2. db arch for workflow, subject and its state
+        
+    D. App arch
+        see notes
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+=======================================================
+NOTES
+=======================================================
+
+------
+APP
+*1. is mdm using https. how do you handel security on app ?
+*2. how is workflow/state of subject implemented ?
+
+-----
+KATS worked on extending to make KATS platform independent (euclalyptus)
+0. how is vcould specific information saved and what information is saved
+1. architecture of vcould director and vshere
+2. how is the test started - the json communication between source and client - path on ftp for folders
+3. what happens in case of failure
+4. how does the communication between vcloud dir and kats happen
+
+*4. how is information pushed to DIW
+
+----
+MDM
+*1. anything apart from hublogic?
+*2. why is hublogic partially in c# and C++
+
+-----
+DIW
+*0. DIW services are all DLLs ?
+1. are we using star 
+*2. how is cleaning of data involved in DIW, like we had workflow in MDM, how is it done here ?
+*3. types of input sources and process of loading them
+*4. do we notify the users when new data is publisehd
+*5. we can put timer for uploading data periodically form source system
+*6. what is flow of data
+	- someone populated landing table and diw periodically updates stagin table from there and does preprocessing and hten make is a part of dimensional data ?
+
+---
+DB OPMAN
+*1. is it a service or a dll - if its a service how is it ensured that only one instance of dpopman is running?
+
+----
+Difference between teradata and other db        
